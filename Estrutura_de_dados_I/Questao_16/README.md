@@ -89,10 +89,6 @@ g++ -std=c++17 -Wall -Wextra -Wpedantic src/fila_pilha.cpp -o build/fila_pilha
 ./build/fila_pilha
 ```
 
-## Publicação no GitHub
-
-Crie um repositório e envie o conteúdo desta pasta, mantendo `README.md` na raiz e o código em `src`. Inclua `.gitignore`, que exclui os arquivos de compilação. O pacote não contém executáveis.
-
 ## Referências
 
 - Microsoft Learn: [queue](https://learn.microsoft.com/en-us/cpp/standard-library/queue-class?view=msvc-170) e [stack](https://learn.microsoft.com/en-us/cpp/standard-library/stack-class?view=msvc-170).
