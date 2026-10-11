@@ -2,6 +2,17 @@
 
 Atividade da disciplina **Estrutura de Dados em C**. O enunciado solicita uma pesquisa sobre `std::queue` e `std::stack`, com características, funções básicas e exemplos de inserção, remoção, acesso e verificação de vazio.
 
+## Autores e Informações Acadêmicas
+
+- **Instituição:** Instituto Federal do Piauí (IFPI)
+- **Disciplina:** Estrutura de Dados I
+- **Professora:** Elane Cristina Oliveira dos Santos
+- **Aluno:** Daniel Alves Nunes Leite
+
+## Explicação em vídeo
+
+[Assistir à explicação no YouTube](https://youtu.be/KZyfLLY5JLM)
+
 ## Linguagem utilizada
 
 O programa usa **C++17**, pois `std::queue` e `std::stack` pertencem à biblioteca padrão de C++. O arquivo tem extensão `.cpp` e requer um compilador C++. Esses conceitos também podem ser implementados em C, mas a biblioteca padrão de C não fornece essas classes.
