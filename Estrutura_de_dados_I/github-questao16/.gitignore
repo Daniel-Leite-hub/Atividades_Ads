@@ -1,0 +1,8 @@
+# Arquivos gerados na compilacao nao precisam ir para o GitHub.
+build/
+*.exe
+*.obj
+*.o
+*.pdb
+*.ilk
+.vs/
