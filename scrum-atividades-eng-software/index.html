@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrum na Biblioteca — Atividades 01 a 04</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<aside>
+  <div class="brand">
+    <small>Engenharia de Software</small>
+    <h1>Scrum na Biblioteca</h1>
+  </div>
+  <nav>
+    <button class="active" data-tab="inicio"><span>00</span>Início</button>
+    <button data-tab="atv1"><span>01</span>Introdução ao Scrum</button>
+    <button data-tab="atv2"><span>02</span>Papéis, artefatos e eventos</button>
+    <button data-tab="atv3"><span>03</span>Product Owner</button>
+    <button data-tab="atv4"><span>04</span>Scrum Master</button>
+  </nav>
+  <div class="team">
+    <strong>Alunos</strong>
+    Daniel Alves · Kaio Costa · Francisco Breno
+  </div>
+</aside>
+
+<main>
+
+<!-- ================= INÍCIO ================= -->
+<section class="panel active" id="inicio">
+  <span class="kicker">Atividades práticas em trio</span>
+  <h2>App de reserva de salas da biblioteca</h2>
+  <p class="lead">
+    Resolução das quatro atividades de Scrum usando o mesmo produto: consultar, reservar e cancelar horários da Sala 1.
+    Cada aba traz as decisões do trio, um protótipo simples e os testes clicáveis.
+  </p>
+
+  <div class="test-bar">
+    <div>
+      <strong>Testes das 4 atividades</strong>
+      <small id="global-status">0 de 11 testados</small>
+    </div>
+    <div class="test-bar-actions">
+      <button class="run-all-btn" id="global-run-all">▶ Executar todos (11)</button>
+      <button class="subtle-btn dark" id="global-reset-all">↺ Limpar</button>
+    </div>
+  </div>
+
+  <div class="activity-cards">
+    <div class="act-card" data-goto="atv1">
+      <div>
+        <div class="act-card-header">
+          <span class="label">Atividade 01</span>
+          <span class="tag wait" id="card-status-a1">0 / 4</span>
+        </div>
+        <h4>Introdução ao Scrum</h4>
+        <p>Consulta da Sala 1 em duas rodadas: da resposta em branco à mensagem clara de "Ocupado".</p>
+      </div>
+      <div class="act-card-footer">
+        <span>4 testes</span>
+        <span>Abrir →</span>
+      </div>
+    </div>
+
+    <div class="act-card" data-goto="atv2">
+      <div>
+        <div class="act-card-header">
+          <span class="label">Atividade 02</span>
+          <span class="tag wait" id="card-status-a2">0 / 2</span>
+        </div>
+        <h4>Papéis, Artefatos e Eventos</h4>
+        <p>Product Backlog, Sprint Backlog ajustado na Diária e testes de reserva livre e ocupada.</p>
+      </div>
+      <div class="act-card-footer">
+        <span>2 testes</span>
+        <span>Abrir →</span>
+      </div>
+    </div>
+
+    <div class="act-card" data-goto="atv3">
+      <div>
+        <div class="act-card-header">
+          <span class="label">Atividade 03</span>
+          <span class="tag wait" id="card-status-a3">0 / 2</span>
+        </div>
+        <h4>Product Owner</h4>
+        <p>Priorização por valor (5 atrasos vs. 8 reservas sem uso) e fluxo de cancelar reserva.</p>
+      </div>
+      <div class="act-card-footer">
+        <span>2 testes</span>
+        <span>Abrir →</span>
+      </div>
+    </div>
+
+    <div class="act-card" data-goto="atv4">
+      <div>
+        <div class="act-card-header">
+          <span class="label">Atividade 04</span>
+          <span class="tag wait" id="card-status-a4">0 / 3</span>
+        </div>
+        <h4>Scrum Master</h4>
+        <p>Impedimento de conta sem acesso, chamado ao suporte e plano adaptado pelo time.</p>
+      </div>
+      <div class="act-card-footer">
+        <span>3 testes</span>
+        <span>Abrir →</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><span class="tag ok">PASSOU</span> funcionou como esperado</span>
+    <span><span class="tag no">FALHOU</span> resposta errada ou confusa</span>
+    <span><span class="tag wait">BLOQUEADO</span> depende de algo externo</span>
+  </div>
+</section>
+
+<!-- ================= ATIVIDADE 01 ================= -->
+<section class="panel" id="atv1">
+  <span class="kicker">Atividade 01 · Introdução ao Scrum</span>
+  <h2>Consultar a Sala 1</h2>
+  <p class="lead">Cenário: 09h livre, 10h ocupada e 11h livre. O trio fez duas rodadas curtas e testou com um colega diferente em cada rodada.</p>
+
+  <h3 data-n="1">Papéis por rodada</h3>
+  <table class="roles">
+    <tr><th>Rodada</th><th>Product Owner</th><th>Scrum Master</th><th>Developers</th></tr>
+    <tr><td>1</td><td>Daniel</td><td>Kaio</td><td>Francisco</td></tr>
+    <tr><td>2</td><td>Francisco</td><td>Daniel</td><td>Kaio</td></tr>
+  </table>
+
+  <h3 data-n="2">Protótipo e testes</h3>
+  <div class="lab">
+    <div>
+      <div class="switch" id="a1-switch">
+        <button class="on" data-r="1">Rodada 1</button>
+        <button data-r="2">Rodada 2</button>
+      </div>
+      <div class="phone">
+        <div class="bar"><span>Biblioteca</span><span>Sala 1</span></div>
+        <button class="slot sel" data-time="09:00">09:00</button>
+        <button class="slot" data-time="10:00">10:00</button>
+        <button class="slot" data-time="11:00">11:00</button>
+        <button class="phone-btn" id="a1-go">Consultar</button>
+        <div class="screen-out" id="a1-out">Escolha um horário e consulte</div>
+        <button class="subtle-btn" id="a1-reset" style="margin-top:.7rem;width:100%">↺ Limpar</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="summary">
+        <span>Testes da Atividade 01</span>
+        <button class="run-all-btn" data-group="a1">▶ Executar todos (4)</button>
+        <span class="score" id="a1-score">0 / 4</span>
+      </div>
+
+      <div class="test" data-test="a1-t1">
+        <header><b>R1-T1</b><h4>Rodada 1 · consultar 09:00 (livre)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> selecionar 09:00 e clicar em Consultar</div>
+          <div><strong>Esperado:</strong> mostrar "Livre"</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="a1-t2">
+        <header><b>R1-T2</b><h4>Rodada 1 · consultar 10:00 (ocupada)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> selecionar 10:00 e clicar em Consultar</div>
+          <div><strong>Esperado:</strong> avisar que a sala está ocupada</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+        <div class="note">Falha esperada na Rodada 1: a tela ficou em branco e o colega achou que o app travou.</div>
+      </div>
+
+      <div class="test" data-test="a1-t3">
+        <header><b>R2-T1</b><h4>Rodada 2 · consultar 11:00 (livre)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> selecionar 11:00 e clicar em Consultar</div>
+          <div><strong>Esperado:</strong> mostrar "Livre"</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="a1-t4">
+        <header><b>R2-T2</b><h4>Rodada 2 · consultar 10:00 (ocupada)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> selecionar 10:00 e clicar em Consultar</div>
+          <div><strong>Esperado:</strong> avisar que a sala está ocupada</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="box" style="margin-top:1rem">
+    <span class="label">Registro dos testes com colegas</span>
+    <p><b>Rodada 1:</b> às 09h o colega viu "Livre" e entendeu. Às 10h a tela ficou em branco, ele clicou de novo e perguntou se tinha travado.</p>
+    <p><b>Rodada 2:</b> colocamos a mensagem <i>"Ocupado — escolha outro horário"</i>. A segunda colega entendeu na hora que 10h já tinha gente usando.</p>
+  </div>
+
+  <h3 data-n="3">Respostas</h3>
+  <dl class="answer box">
+    <dt>1. Transparência</dt>
+    <dd>Mostramos na tela os horários da Sala 1 (09h, 10h e 11h), o botão Consultar e o campo de resposta, para o colega e o trio verem exatamente a mesma coisa.</dd>
+    <dt>2. Inspeção</dt>
+    <dd>O colega entendeu o horário livre às 09h, mas às 10h a resposta em branco causou dúvida e ele pensou que o aplicativo havia travado.</dd>
+    <dt>3. Adaptação</dt>
+    <dd>Substituímos a tela em branco pelo aviso "Ocupado — escolha outro horário"; no segundo teste a colega entendeu de primeira.</dd>
+    <dt>4. Valor do Scrum</dt>
+    <dd><b>Abertura:</b> assumimos no teste que a primeira versão confundia o usuário e mudamos a tela sem tentar justificar o erro.</dd>
+  </dl>
+</section>
+
+<!-- ================= ATIVIDADE 02 ================= -->
+<section class="panel" id="atv2">
+  <span class="kicker">Atividade 02 · Papéis, artefatos e eventos</span>
+  <h2>Reservar a Sala 1</h2>
+  <p class="lead">Product Owner: Daniel · Scrum Master: Kaio · Developers: Francisco</p>
+
+  <h3 data-n="1">Product Backlog</h3>
+  <div class="box">
+    <span class="label">Meta do Produto</span>
+    <p class="quote">Permitir que estudantes reservem salas de estudo sem conflito de horário.</p>
+    <ol class="backlog">
+      <li><div><b>Reservar sala</b><small>Vem primeiro porque sem reserva criada não existe o que cancelar nem lembrar.</small></div><span class="tag ok">Sprint atual</span></li>
+      <li><div><b>Cancelar reserva</b><small>Libera o horário quando o estudante não puder ir.</small></div><span class="tag wait">Depois</span></li>
+      <li><div><b>Receber lembrete</b><small>Avisa antes para evitar atrasos.</small></div><span class="tag wait">Depois</span></li>
+    </ol>
+  </div>
+
+  <h3 data-n="2">Planejamento da Sprint e Reunião Diária</h3>
+  <div class="cols">
+    <div class="box">
+      <span class="label">Meta da Sprint e Sprint Backlog</span>
+      <p class="quote">O estudante reserva um horário livre da Sala 1 e não consegue reservar um horário ocupado.</p>
+      <ul style="margin-left:1.2rem;margin-top:.6rem">
+        <li>Tela de escolha de horário</li>
+        <li>Tela de confirmação</li>
+        <li><b>Tela e aviso de horário ocupado</b> <span class="tag ok">incluída na Diária</span></li>
+        <li>Executar Teste A e Teste B</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="label">Ajuste na Reunião Diária</span>
+      <p>No primeiro rascunho só existia a tela de confirmação. Se alguém escolhesse 10h, o app confirmaria duas reservas no mesmo horário e quebraria a Meta da Sprint.</p>
+      <p><b>Ajuste:</b> o Developer registrou no Sprint Backlog a tarefa de bloquear horário ocupado e avisar o usuário.</p>
+    </div>
+  </div>
+
+  <h3 data-n="3">Protótipo e testes</h3>
+  <div class="lab">
+    <div class="phone">
+      <div class="bar"><span>Reservar</span><span>Sala 1</span></div>
+      <button class="slot sel" data-time="09:00" id="a2-slot-09">09:00 <span class="tag ok" id="a2-tag-09">livre</span></button>
+      <button class="slot" data-time="10:00" id="a2-slot-10">10:00 <span class="tag no" id="a2-tag-10">ocupada</span></button>
+      <button class="phone-btn" id="a2-go">Confirmar reserva</button>
+      <div class="screen-out" id="a2-out">Escolha um horário</div>
+      <button class="subtle-btn" id="a2-reset" style="margin-top:.7rem;width:100%">↺ Reiniciar</button>
+    </div>
+    <div>
+      <div class="summary">
+        <span>Critério de conclusão: telas legíveis + 2 testes ok</span>
+        <button class="run-all-btn" data-group="a2">▶ Executar todos (2)</button>
+        <span class="score" id="a2-score">0 / 2</span>
+      </div>
+
+      <div class="test" data-test="a2-ta">
+        <header><b>TESTE A</b><h4>Reservar 09:00 (livre)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> escolher 09:00 e clicar em Confirmar reserva</div>
+          <div><strong>Esperado:</strong> confirmar a reserva da Sala 1 às 09:00</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="a2-tb">
+        <header><b>TESTE B</b><h4>Tentar reservar 10:00 (ocupada)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> escolher 10:00 e clicar em Confirmar reserva</div>
+          <div><strong>Esperado:</strong> avisar "Horário ocupado" sem confirmar</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 data-n="4">Revisão e Retrospectiva</h3>
+  <div class="cols">
+    <div class="box">
+      <span class="label">Revisão da Sprint · produto</span>
+      <p>A colega convidada testou e disse: <i>"Quando deu ocupado às 10h, eu queria ver logo qual é o próximo horário livre."</i></p>
+      <p><b>Decisão do PO:</b> entrou no Product Backlog o item "sugerir próximo horário livre", logo após o cancelamento, pois facilita a vida de quem não achou vaga.</p>
+    </div>
+    <div class="box">
+      <span class="label">Retrospectiva · jeito de trabalhar</span>
+      <p>O trio percebeu que quase esqueceu a tela de horário ocupado porque desenhou as telas antes de listar os testes.</p>
+      <p><b>Melhoria combinada:</b> escrever os casos de teste (incluindo os casos de erro) antes de desenhar as telas da próxima Sprint.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ATIVIDADE 03 ================= -->
+<section class="panel" id="atv3">
+  <span class="kicker">Atividade 03 · Product Owner</span>
+  <h2>Qual melhoria entra primeiro?</h2>
+  <p class="lead">O app já consulta e reserva salas, mas o time só entrega uma melhoria nesta semana: A) enviar lembrete, B) cancelar reserva ou C) personalizar cores.</p>
+
+  <div class="box">
+    <span class="label">Meta do Produto</span>
+    <p class="quote">Fazer com que as salas reservadas sejam realmente usadas pelos estudantes.</p>
+  </div>
+
+  <div class="switch" id="a3-switch">
+    <button class="on" data-s="1">1ª decisão · 5 atrasos</button>
+    <button data-s="2">2ª decisão · fato novo (8 sem uso)</button>
+  </div>
+
+  <div class="cols">
+    <div class="box">
+      <span class="label" id="a3-who">PO: Daniel · SM: Kaio · Dev: Francisco</span>
+      <ol class="backlog" id="a3-list"></ol>
+    </div>
+    <div class="box">
+      <span class="label">Justificativa</span>
+      <p id="a3-why"></p>
+    </div>
+  </div>
+
+  <h3 data-n="→">Demonstração: cancelar reserva</h3>
+  <div class="lab">
+    <div class="phone">
+      <div class="bar"><span>Minhas reservas</span><span>Daniel</span></div>
+      <div id="a3-card" style="border:1px solid #eee;border-radius:10px;padding:.85rem">
+        <b>Sala 1 · hoje 10:00</b><br><small>Confirmada</small>
+        <button class="phone-btn danger" id="a3-cancel">Cancelar reserva</button>
+      </div>
+      <div class="screen-out" id="a3-out">—</div>
+      <div style="margin-top:.9rem;border-top:1px dashed #ddd;padding-top:.75rem;font-size:.86rem">
+        <span class="label">Tela de outro estudante</span>
+        Sala 1 · 10:00 <span class="tag no" id="a3-peer">ocupada</span>
+      </div>
+      <button class="subtle-btn" id="a3-reset" style="margin-top:.75rem;width:100%">↺ Restaurar reserva</button>
+      <div class="modal" id="a3-modal"><div>
+        Cancelar a reserva da <b>Sala 1 às 10:00</b>? O horário ficará livre para outros colegas.
+        <div class="row"><button class="phone-btn" style="background:#888" id="a3-no">Voltar</button><button class="phone-btn danger" id="a3-yes">Cancelar</button></div>
+      </div></div>
+    </div>
+    <div>
+      <div class="summary">
+        <span>Testes do cancelamento</span>
+        <button class="run-all-btn" data-group="a3">▶ Executar todos (2)</button>
+        <span class="score" id="a3-score">0 / 2</span>
+      </div>
+
+      <div class="test" data-test="a3-t1">
+        <header><b>TESTE C1</b><h4>Cancelar a própria reserva</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> tocar em "Cancelar reserva" e confirmar</div>
+          <div><strong>Esperado:</strong> mostrar "Reserva cancelada"</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="a3-t2">
+        <header><b>TESTE C2</b><h4>Outro estudante vê 10:00 livre</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> verificar o horário na tela de outro estudante após cancelar</div>
+          <div><strong>Esperado:</strong> Sala 1 · 10:00 marcada como "livre"</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ATIVIDADE 04 ================= -->
+<section class="panel" id="atv4">
+  <span class="kicker">Atividade 04 · Scrum Master</span>
+  <h2>A conta de teste perdeu o acesso</h2>
+  <p class="lead">Meta da Sprint: o estudante cancela uma reserva e o horário volta a ficar livre. O código está pronto para testar, mas a conta perdeu acesso ao ambiente de teste.</p>
+
+  <h3 data-n="1">Conversa 1 e encaminhamento (SM Kaio · PO Daniel · Dev Francisco)</h3>
+  <div class="box">
+    <p><b>Kaio (SM):</b> "O que ficou bloqueado e como isso afeta a Meta da Sprint?"</p>
+    <p><b>Francisco (Dev):</b> "Não consigo testar no ambiente de teste se o horário volta a ficar livre."</p>
+    <p><b>Daniel (PO):</b> "Sem esse teste não podemos entregar, pois precisamos garantir que outro estudante veja a sala livre."</p>
+    <p><b>Kaio (SM):</b> "Quem pode resolver, o que vamos fazer e quando conferimos?"</p>
+    <p><b>Francisco (Dev):</b> "Só o suporte pode liberar o acesso. Eu abro o pedido agora e conferimos às 14h."</p>
+  </div>
+
+  <div class="cols">
+    <div class="box">
+      <span class="label">Registro do impedimento</span>
+      <table class="roles">
+        <tr><td><b>Impedimento</b></td><td>Conta de teste sem acesso ao ambiente de teste</td></tr>
+        <tr><td><b>Efeito na meta</b></td><td>Não dá para testar o cancelamento</td></tr>
+        <tr><td><b>Ação</b></td><td>Enviar pedido ao suporte</td></tr>
+        <tr><td><b>Responsável</b></td><td>Francisco envia e Kaio acompanha</td></tr>
+        <tr><td><b>Verificação</b></td><td>Hoje às 14h e amanhã de manhã</td></tr>
+      </table>
+    </div>
+    <div class="box">
+      <span class="label">Mensagem ao suporte</span>
+<pre class="mail">Assunto: Acesso da conta de teste – app da biblioteca
+
+Olá! A conta de teste do app da biblioteca perdeu o acesso ao ambiente de teste.
+Precisamos dela para testar o cancelamento de reservas desta Sprint.
+Vocês conseguem restabelecer o acesso?
+
+Obrigado, Francisco (time do app)</pre>
+      <p><b>Resposta do suporte:</b> <i>"Só conseguimos liberar amanhã de manhã."</i></p>
+    </div>
+  </div>
+
+  <h3 data-n="2">Conversa 2 e plano ajustado (SM Francisco · PO Kaio · Dev Daniel)</h3>
+  <div class="box">
+    <p><b>Francisco (novo SM):</b> "O acesso só volta amanhã. O que podemos adiantar hoje e como vamos conferir quando voltar?"</p>
+    <p><b>Kaio (novo PO):</b> "Quando cancelar a Sala 1 às 10h, ela deve aparecer livre para qualquer outro colega."</p>
+    <p><b>Daniel (novo Dev):</b> "Hoje desenhamos o fluxo e escrevemos os testes; amanhã entramos com a conta e testamos no ambiente."</p>
+  </div>
+
+  <div class="cols">
+    <div class="box">
+      <span class="label">Fazemos hoje (sem depender do suporte)</span>
+      <ul style="margin-left:1.2rem">
+        <li>Desenhar as telas de cancelamento da Sala 1 às 10h</li>
+        <li>Escrever os 3 testes com entradas e resultados esperados</li>
+        <li>Revisar os textos das mensagens com o PO</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="label">Depende do suporte (amanhã)</span>
+      <ul style="margin-left:1.2rem">
+        <li><b>Conferir remoção:</b> tentar entrar com a conta de teste no ambiente</li>
+        <li><b>Testar em seguida:</b> cancelar a Sala 1 às 10h e conferir na conta de outro estudante se ficou "livre"</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 data-n="3">Simulação do ambiente de teste</h3>
+  <div class="lab">
+    <div>
+      <div class="switch" id="a4-switch">
+        <button class="on" data-d="hoje">Hoje (sem acesso)</button>
+        <button data-d="amanha">Amanhã (acesso voltou)</button>
+      </div>
+
+      <div class="phone">
+        <div class="bar"><span>Ambiente de teste</span><span>Sala 1</span></div>
+        <div style="font-size:.9rem;margin-bottom:.7rem">
+          Conta de teste: <span class="tag no" id="a4-auth-tag">Sem acesso</span>
+        </div>
+        <div style="border:1px solid #eee;border-radius:10px;padding:.75rem;font-size:.88rem;margin-bottom:.6rem">
+          <b>Reserva fictícia:</b> Sala 1 · 10:00<br>
+          Status atual: <span class="tag no" id="a4-slot-tag">ocupada</span>
+        </div>
+        <button class="phone-btn" id="a4-try-btn">Entrar e testar cancelamento</button>
+        <div class="screen-out" id="a4-out">Clique para testar a conta no ambiente</div>
+        <button class="subtle-btn" id="a4-reset" style="margin-top:.7rem;width:100%">↺ Reiniciar</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="summary">
+        <span>Impedimento: <b id="a4-state">aberto</b></span>
+        <button class="run-all-btn" data-group="a4">▶ Executar todos (3)</button>
+        <span class="score" id="a4-score">0 / 3</span>
+      </div>
+
+      <div class="test" data-test="a4-t1">
+        <header><b>TESTE S1</b><h4>Entrar com a conta de teste</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> fazer login no ambiente de teste</div>
+          <div><strong>Esperado:</strong> login aceito para liberar os testes</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="a4-t2">
+        <header><b>TESTE S2</b><h4>Cancelar a Sala 1 às 10h</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> cancelar a reserva das 10:00 no ambiente</div>
+          <div><strong>Esperado:</strong> mostrar "Reserva cancelada"</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="a4-t3">
+        <header><b>TESTE S3</b><h4>Outro estudante vê 10:00 livre</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> consultar a Sala 1 com outra conta</div>
+          <div><strong>Esperado:</strong> 10:00 aparecer como "livre"</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <p style="color:var(--ink-soft);font-size:.88rem;margin-top:.6rem">
+        Em <b>Hoje</b>, os testes ficam bloqueados por falta de acesso. Mude para <b>Amanhã</b> para simular depois que o suporte liberou a conta.
+      </p>
+    </div>
+  </div>
+</section>
+
+<footer>Engenharia de Software · Alunos: Daniel Alves, Kaio Costa e Francisco Breno</footer>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>
