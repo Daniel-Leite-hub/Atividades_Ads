@@ -20,6 +20,10 @@ Resolução das quatro atividades em trio de Engenharia de Software sobre Scrum 
 
 Basta dar um duplo clique no arquivo `index.html` no navegador. Não precisa instalar nada.
 
+## Página publicada
+
+Acesse a versão online em: https://daniel-leite-hub.github.io/Atividades_Ads/
+
 ## Como subir para o Git e publicar no GitHub Pages
 
 ```bash
