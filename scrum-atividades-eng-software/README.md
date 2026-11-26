@@ -73,3 +73,7 @@ O projeto não utiliza dependências externas nem etapa de build:
 1. Abra [`index.html`](index.html) em qualquer navegador moderno para acessar as **Atividades 01 a 05**.
 2. Use o link no menu lateral (**Atividades 06–12 →**) ou abra [`pages/atividades-06-a-12.html`](pages/atividades-06-a-12.html) para navegar pela segunda parte.
 3. Clique em **Testar** em cada caso ou em **Executar todos** no topo da página para rodar as simulações automaticamente.
+
+## Site publicado
+
+Acesse o site: [Scrum na Biblioteca](https://daniel-leite-hub.github.io/Atividades_Ads/).
