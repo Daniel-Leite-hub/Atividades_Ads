@@ -67,6 +67,7 @@ function updateScores() {
       ? '0 de 14 testados'
       : `${totalExecuted} de 14 testados · ${totalPassed} passaram`;
   }
+  updateProgressBar(totalExecuted, 14);
 }
 
 const { report, resetTest, runGroup, bindButtons } = createTestSuite({

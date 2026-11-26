@@ -13,18 +13,31 @@
     <small>Engenharia de Software</small>
     <h1>Scrum na Biblioteca</h1>
   </div>
-  <nav>
-    <button class="active" data-tab="inicio"><span>00</span>Início</button>
-    <button data-tab="atv1"><span>01</span>Introdução ao Scrum</button>
-    <button data-tab="atv2"><span>02</span>Papéis, artefatos e eventos</button>
-    <button data-tab="atv3"><span>03</span>Product Owner</button>
-    <button data-tab="atv4"><span>04</span>Scrum Master</button>
-    <button data-tab="atv5"><span>05</span>Time Scrum</button>
-    <a class="nav-ext" href="pages/atividades-06-a-12.html"><span>Atividades 06–12</span><span>→</span></a>
-  </nav>
+
+  <div class="part-switch" aria-label="Alternar entre partes do trabalho">
+    <span class="current" aria-current="page">Parte 1 · 01–05</span>
+    <a href="pages/atividades-06-a-12.html">Parte 2 · 06–12</a>
+  </div>
+
+  <div>
+    <div class="nav-title">Atividades</div>
+    <nav>
+      <button class="active" data-tab="inicio"><span>00</span>Início</button>
+      <button data-tab="atv1"><span>01</span>Introdução ao Scrum</button>
+      <button data-tab="atv2"><span>02</span>Papéis, artefatos e eventos</button>
+      <button data-tab="atv3"><span>03</span>Product Owner</button>
+      <button data-tab="atv4"><span>04</span>Scrum Master</button>
+      <button data-tab="atv5"><span>05</span>Time Scrum</button>
+    </nav>
+  </div>
+
   <div class="team">
-    <strong>Alunos</strong>
-    Daniel Alves · Kaio Costa · Francisco Breno
+    <strong>Integrantes do trio</strong>
+    <div class="team-list">
+      <div class="member"><i>DA</i><span>Daniel Alves</span></div>
+      <div class="member"><i>KC</i><span>Kaio Costa</span></div>
+      <div class="member"><i>FB</i><span>Francisco Breno</span></div>
+    </div>
   </div>
 </aside>
 
@@ -32,26 +45,38 @@
 
 <!-- ================= INÍCIO ================= -->
 <section class="panel active" id="inicio">
-  <span class="kicker">Atividades práticas em trio</span>
-  <h2>App de reserva de salas da biblioteca</h2>
-  <p class="lead">
-    Resolução das cinco atividades de Scrum usando o mesmo produto: consultar, reservar e cancelar horários da Sala 1.
-    Cada aba traz as decisões do trio, um protótipo simples e os testes clicáveis.
-  </p>
+  <div class="panel-head">
+    <span class="kicker">Atividades práticas em trio · Parte 1</span>
+    <h2>App de reserva de salas da biblioteca</h2>
+    <p class="lead">
+      Resolução das cinco atividades iniciais de Scrum usando o mesmo produto: consultar, reservar e cancelar horários da Sala 1.
+      Cada aba reúne as decisões do trio, um protótipo interativo e os testes clicáveis.
+    </p>
+    <div class="meta-chips">
+      <span class="meta-chip"><b>Produto:</b> Biblioteca · Sala 1</span>
+      <span class="meta-chip"><b>Escopo:</b> Atividades 01 a 05</span>
+      <span class="meta-chip"><b>Testes:</b> 14 cenários clicáveis</span>
+    </div>
+  </div>
 
   <div class="test-bar">
-    <div>
-      <strong>Testes das 5 atividades</strong>
-      <small id="global-status">0 de 14 testados</small>
+    <div class="test-bar-top">
+      <div>
+        <strong>Testes das 5 atividades</strong>
+        <small id="global-status">0 de 14 testados</small>
+      </div>
+      <div class="test-bar-actions">
+        <button class="run-all-btn" id="global-run-all">▶ Executar todos (14)</button>
+        <button class="subtle-btn dark" id="global-reset-all">↺ Limpar</button>
+      </div>
     </div>
-    <div class="test-bar-actions">
-      <button class="run-all-btn" id="global-run-all">▶ Executar todos (14)</button>
-      <button class="subtle-btn dark" id="global-reset-all">↺ Limpar</button>
+    <div class="progress-track" aria-hidden="true">
+      <div class="progress-fill" id="global-progress"></div>
     </div>
   </div>
 
   <div class="activity-cards">
-    <div class="act-card" data-goto="atv1">
+    <div class="act-card" data-goto="atv1" tabindex="0" role="button">
       <div>
         <div class="act-card-header">
           <span class="label">Atividade 01</span>
@@ -66,7 +91,7 @@
       </div>
     </div>
 
-    <div class="act-card" data-goto="atv2">
+    <div class="act-card" data-goto="atv2" tabindex="0" role="button">
       <div>
         <div class="act-card-header">
           <span class="label">Atividade 02</span>
@@ -81,7 +106,7 @@
       </div>
     </div>
 
-    <div class="act-card" data-goto="atv3">
+    <div class="act-card" data-goto="atv3" tabindex="0" role="button">
       <div>
         <div class="act-card-header">
           <span class="label">Atividade 03</span>
@@ -96,7 +121,7 @@
       </div>
     </div>
 
-    <div class="act-card" data-goto="atv4">
+    <div class="act-card" data-goto="atv4" tabindex="0" role="button">
       <div>
         <div class="act-card-header">
           <span class="label">Atividade 04</span>
@@ -111,7 +136,7 @@
       </div>
     </div>
 
-    <div class="act-card" data-goto="atv5">
+    <div class="act-card" data-goto="atv5" tabindex="0" role="button">
       <div>
         <div class="act-card-header">
           <span class="label">Atividade 05</span>
@@ -136,20 +161,24 @@
 
 <!-- ================= ATIVIDADE 01 ================= -->
 <section class="panel" id="atv1">
-  <span class="kicker">Atividade 01 · Introdução ao Scrum</span>
-  <h2>Consultar a Sala 1</h2>
-  <p class="lead">Cenário: 09h livre, 10h ocupada e 11h livre. O trio fez duas rodadas curtas e testou com um colega diferente em cada rodada.</p>
+  <div class="panel-head">
+    <span class="kicker">Atividade 01 · Introdução ao Scrum</span>
+    <h2>Consultar a Sala 1</h2>
+    <p class="lead">Cenário: 09h livre, 10h ocupada e 11h livre. O trio fez duas rodadas curtas e testou com um colega diferente em cada rodada.</p>
+  </div>
 
   <h3 data-n="1">Papéis por rodada</h3>
-  <table class="roles">
-    <tr><th>Rodada</th><th>Product Owner</th><th>Scrum Master</th><th>Developers</th></tr>
-    <tr><td>1</td><td>Daniel</td><td>Kaio</td><td>Francisco</td></tr>
-    <tr><td>2</td><td>Francisco</td><td>Daniel</td><td>Kaio</td></tr>
-  </table>
+  <div class="box table-wrap">
+    <table class="roles">
+      <tr><th>Rodada</th><th>Product Owner</th><th>Scrum Master</th><th>Developers</th></tr>
+      <tr><td>1</td><td>Daniel</td><td>Kaio</td><td>Francisco</td></tr>
+      <tr><td>2</td><td>Francisco</td><td>Daniel</td><td>Kaio</td></tr>
+    </table>
+  </div>
 
   <h3 data-n="2">Protótipo e testes</h3>
   <div class="lab">
-    <div>
+    <div class="lab-device">
       <div class="switch" id="a1-switch">
         <button class="on" data-r="1">Rodada 1</button>
         <button data-r="2">Rodada 2</button>
@@ -211,7 +240,7 @@
     </div>
   </div>
 
-  <div class="box" style="margin-top:1rem">
+  <div class="box" style="margin-top:1.15rem">
     <span class="label">Registro dos testes com colegas</span>
     <p><b>Rodada 1:</b> às 09h o colega viu "Livre" e entendeu. Às 10h a tela ficou em branco, ele clicou de novo e perguntou se tinha travado.</p>
     <p><b>Rodada 2:</b> colocamos a mensagem <i>"Ocupado — escolha outro horário"</i>. A segunda colega entendeu na hora que 10h já tinha gente usando.</p>
@@ -228,13 +257,20 @@
     <dt>4. Valor do Scrum</dt>
     <dd><b>Abertura:</b> assumimos no teste que a primeira versão confundia o usuário e mudamos a tela sem tentar justificar o erro.</dd>
   </dl>
+
+  <div class="panel-nav">
+    <button class="panel-nav-btn" data-goto="inicio">← Voltar ao Início</button>
+    <button class="panel-nav-btn primary" data-goto="atv2">Próxima: Atividade 02 →</button>
+  </div>
 </section>
 
 <!-- ================= ATIVIDADE 02 ================= -->
 <section class="panel" id="atv2">
-  <span class="kicker">Atividade 02 · Papéis, artefatos e eventos</span>
-  <h2>Reservar a Sala 1</h2>
-  <p class="lead">Product Owner: Daniel · Scrum Master: Kaio · Developers: Francisco</p>
+  <div class="panel-head">
+    <span class="kicker">Atividade 02 · Papéis, artefatos e eventos</span>
+    <h2>Reservar a Sala 1</h2>
+    <p class="lead">Product Owner: Daniel · Scrum Master: Kaio · Developers: Francisco</p>
+  </div>
 
   <h3 data-n="1">Product Backlog</h3>
   <div class="box">
@@ -268,13 +304,15 @@
 
   <h3 data-n="3">Protótipo e testes</h3>
   <div class="lab">
-    <div class="phone">
-      <div class="bar"><span>Reservar</span><span>Sala 1</span></div>
-      <button class="slot sel" data-time="09:00" id="a2-slot-09">09:00 <span class="tag ok" id="a2-tag-09">livre</span></button>
-      <button class="slot" data-time="10:00" id="a2-slot-10">10:00 <span class="tag no" id="a2-tag-10">ocupada</span></button>
-      <button class="phone-btn" id="a2-go">Confirmar reserva</button>
-      <div class="screen-out" id="a2-out">Escolha um horário</div>
-      <button class="subtle-btn" id="a2-reset" style="margin-top:.7rem;width:100%">↺ Reiniciar</button>
+    <div class="lab-device">
+      <div class="phone">
+        <div class="bar"><span>Reservar</span><span>Sala 1</span></div>
+        <button class="slot sel" data-time="09:00" id="a2-slot-09">09:00 <span class="tag ok" id="a2-tag-09">livre</span></button>
+        <button class="slot" data-time="10:00" id="a2-slot-10">10:00 <span class="tag no" id="a2-tag-10">ocupada</span></button>
+        <button class="phone-btn" id="a2-go">Confirmar reserva</button>
+        <div class="screen-out" id="a2-out">Escolha um horário</div>
+        <button class="subtle-btn" id="a2-reset" style="margin-top:.7rem;width:100%">↺ Reiniciar</button>
+      </div>
     </div>
     <div>
       <div class="summary">
@@ -316,13 +354,20 @@
       <p><b>Melhoria combinada:</b> escrever os casos de teste (incluindo os casos de erro) antes de desenhar as telas da próxima Sprint.</p>
     </div>
   </div>
+
+  <div class="panel-nav">
+    <button class="panel-nav-btn" data-goto="atv1">← Anterior: Atividade 01</button>
+    <button class="panel-nav-btn primary" data-goto="atv3">Próxima: Atividade 03 →</button>
+  </div>
 </section>
 
 <!-- ================= ATIVIDADE 03 ================= -->
 <section class="panel" id="atv3">
-  <span class="kicker">Atividade 03 · Product Owner</span>
-  <h2>Qual melhoria entra primeiro?</h2>
-  <p class="lead">O app já consulta e reserva salas, mas o time só entrega uma melhoria nesta semana: A) enviar lembrete, B) cancelar reserva ou C) personalizar cores.</p>
+  <div class="panel-head">
+    <span class="kicker">Atividade 03 · Product Owner</span>
+    <h2>Qual melhoria entra primeiro?</h2>
+    <p class="lead">O app já consulta e reserva salas, mas o time só entrega uma melhoria nesta semana: A) enviar lembrete, B) cancelar reserva ou C) personalizar cores.</p>
+  </div>
 
   <div class="box">
     <span class="label">Meta do Produto</span>
@@ -347,22 +392,24 @@
 
   <h3 data-n="→">Demonstração: cancelar reserva</h3>
   <div class="lab">
-    <div class="phone">
-      <div class="bar"><span>Minhas reservas</span><span>Daniel</span></div>
-      <div id="a3-card" style="border:1px solid #eee;border-radius:10px;padding:.85rem">
-        <b>Sala 1 · hoje 10:00</b><br><small>Confirmada</small>
-        <button class="phone-btn danger" id="a3-cancel">Cancelar reserva</button>
+    <div class="lab-device">
+      <div class="phone">
+        <div class="bar"><span>Minhas reservas</span><span>Daniel</span></div>
+        <div id="a3-card" style="border:1px solid #e6e0d6;border-radius:10px;padding:.85rem;background:#fcfaf6">
+          <b>Sala 1 · hoje 10:00</b><br><small style="color:var(--ink-soft)">Confirmada</small>
+          <button class="phone-btn danger" id="a3-cancel" style="margin-top:.65rem">Cancelar reserva</button>
+        </div>
+        <div class="screen-out" id="a3-out">—</div>
+        <div style="margin-top:.9rem;border-top:1px dashed var(--line);padding-top:.75rem;font-size:.86rem">
+          <span class="label">Tela de outro estudante</span>
+          Sala 1 · 10:00 <span class="tag no" id="a3-peer">ocupada</span>
+        </div>
+        <button class="subtle-btn" id="a3-reset" style="margin-top:.75rem;width:100%">↺ Restaurar reserva</button>
+        <div class="modal" id="a3-modal"><div>
+          Cancelar a reserva da <b>Sala 1 às 10:00</b>? O horário ficará livre para outros colegas.
+          <div class="row"><button class="phone-btn muted" id="a3-no">Voltar</button><button class="phone-btn danger" id="a3-yes">Cancelar</button></div>
+        </div></div>
       </div>
-      <div class="screen-out" id="a3-out">—</div>
-      <div style="margin-top:.9rem;border-top:1px dashed #ddd;padding-top:.75rem;font-size:.86rem">
-        <span class="label">Tela de outro estudante</span>
-        Sala 1 · 10:00 <span class="tag no" id="a3-peer">ocupada</span>
-      </div>
-      <button class="subtle-btn" id="a3-reset" style="margin-top:.75rem;width:100%">↺ Restaurar reserva</button>
-      <div class="modal" id="a3-modal"><div>
-        Cancelar a reserva da <b>Sala 1 às 10:00</b>? O horário ficará livre para outros colegas.
-        <div class="row"><button class="phone-btn" style="background:#888" id="a3-no">Voltar</button><button class="phone-btn danger" id="a3-yes">Cancelar</button></div>
-      </div></div>
     </div>
     <div>
       <div class="summary">
@@ -390,13 +437,20 @@
       </div>
     </div>
   </div>
+
+  <div class="panel-nav">
+    <button class="panel-nav-btn" data-goto="atv2">← Anterior: Atividade 02</button>
+    <button class="panel-nav-btn primary" data-goto="atv4">Próxima: Atividade 04 →</button>
+  </div>
 </section>
 
 <!-- ================= ATIVIDADE 04 ================= -->
 <section class="panel" id="atv4">
-  <span class="kicker">Atividade 04 · Scrum Master</span>
-  <h2>A conta de teste perdeu o acesso</h2>
-  <p class="lead">Meta da Sprint: o estudante cancela uma reserva e o horário volta a ficar livre. O código está pronto para testar, mas a conta perdeu acesso ao ambiente de teste.</p>
+  <div class="panel-head">
+    <span class="kicker">Atividade 04 · Scrum Master</span>
+    <h2>A conta de teste perdeu o acesso</h2>
+    <p class="lead">Meta da Sprint: o estudante cancela uma reserva e o horário volta a ficar livre. O código está pronto para testar, mas a conta perdeu acesso ao ambiente de teste.</p>
+  </div>
 
   <h3 data-n="1">Conversa 1 e encaminhamento (SM Kaio · PO Daniel · Dev Francisco)</h3>
   <div class="box">
@@ -408,7 +462,7 @@
   </div>
 
   <div class="cols">
-    <div class="box">
+    <div class="box table-wrap">
       <span class="label">Registro do impedimento</span>
       <table class="roles">
         <tr><td><b>Impedimento</b></td><td>Conta de teste sem acesso ao ambiente de teste</td></tr>
@@ -458,7 +512,7 @@ Obrigado, Francisco (time do app)</pre>
 
   <h3 data-n="3">Simulação do ambiente de teste</h3>
   <div class="lab">
-    <div>
+    <div class="lab-device">
       <div class="switch" id="a4-switch">
         <button class="on" data-d="hoje">Hoje (sem acesso)</button>
         <button data-d="amanha">Amanhã (acesso voltou)</button>
@@ -466,12 +520,13 @@ Obrigado, Francisco (time do app)</pre>
 
       <div class="phone">
         <div class="bar"><span>Ambiente de teste</span><span>Sala 1</span></div>
-        <div style="font-size:.9rem;margin-bottom:.7rem">
-          Conta de teste: <span class="tag no" id="a4-auth-tag">Sem acesso</span>
+        <div style="font-size:.88rem;margin-bottom:.7rem;display:flex;justify-content:space-between;align-items:center">
+          <span>Conta de teste:</span>
+          <span class="tag no" id="a4-auth-tag">Sem acesso</span>
         </div>
-        <div style="border:1px solid #eee;border-radius:10px;padding:.75rem;font-size:.88rem;margin-bottom:.6rem">
+        <div style="border:1px solid #e6e0d6;border-radius:10px;padding:.75rem;font-size:.86rem;margin-bottom:.6rem;background:#fcfaf6">
           <b>Reserva fictícia:</b> Sala 1 · 10:00<br>
-          Status atual: <span class="tag no" id="a4-slot-tag">ocupada</span>
+          <span style="display:inline-flex;align-items:center;gap:.4rem;margin-top:.3rem">Status atual: <span class="tag no" id="a4-slot-tag">ocupada</span></span>
         </div>
         <button class="phone-btn" id="a4-try-btn">Entrar e testar cancelamento</button>
         <div class="screen-out" id="a4-out">Clique para testar a conta no ambiente</div>
@@ -513,24 +568,31 @@ Obrigado, Francisco (time do app)</pre>
         </div>
       </div>
 
-      <p style="color:var(--ink-soft);font-size:.88rem;margin-top:.6rem">
+      <p class="note">
         Em <b>Hoje</b>, os testes ficam bloqueados por falta de acesso. Mude para <b>Amanhã</b> para simular depois que o suporte liberou a conta.
       </p>
     </div>
+  </div>
+
+  <div class="panel-nav">
+    <button class="panel-nav-btn" data-goto="atv3">← Anterior: Atividade 03</button>
+    <button class="panel-nav-btn primary" data-goto="atv5">Próxima: Atividade 05 →</button>
   </div>
 </section>
 
 <!-- ================= ATIVIDADE 05 ================= -->
 <section class="panel" id="atv5">
-  <span class="kicker">Atividade 05 · Time Scrum</span>
-  <h2>Organizar o trabalho e corrigir a inconsistência</h2>
-  <p class="lead">
-    O time recuperou o acesso aos testes e retomou o cancelamento. A Sala 1 está reservada por <b>Ana às 10h</b>.
-    Meta da Sprint: permitir que Ana cancele sua reserva e que outro estudante veja o horário liberado na consulta.
-  </p>
+  <div class="panel-head">
+    <span class="kicker">Atividade 05 · Time Scrum</span>
+    <h2>Organizar o trabalho e corrigir a inconsistência</h2>
+    <p class="lead">
+      O time recuperou o acesso aos testes e retomou o cancelamento. A Sala 1 está reservada por <b>Ana às 10h</b>.
+      Meta da Sprint: permitir que Ana cancele sua reserva e que outro estudante veja o horário liberado na consulta.
+    </p>
+  </div>
 
   <h3 data-n="1">Responsabilidades do Time Scrum</h3>
-  <div class="box">
+  <div class="box table-wrap">
     <table class="roles">
       <tr><th>Papel</th><th>Aluno</th><th>Contribuição na simulação</th></tr>
       <tr>
@@ -552,7 +614,7 @@ Obrigado, Francisco (time do app)</pre>
   </div>
 
   <h3 data-n="2">Plano inicial da Sprint</h3>
-  <div class="box">
+  <div class="box table-wrap">
     <span class="label">Meta da Sprint</span>
     <p class="quote">Permitir que Ana cancele sua reserva e que outro estudante consiga ver o horário liberado na consulta.</p>
     <table class="roles" style="margin-top:.7rem">
@@ -572,7 +634,7 @@ Obrigado, Francisco (time do app)</pre>
       <p><b>Kaio (SM):</b> "O que precisa mudar no fluxo e como podemos nos ajudar para corrigir e testar rápido?"</p>
       <p><b>Francisco (Dev):</b> "Faltou o botão Confirmar atualizar a consulta da Sala 1 às 10h para livre."</p>
     </div>
-    <div class="box">
+    <div class="box table-wrap">
       <span class="label">Ajuste registrado no plano</span>
       <table class="roles">
         <tr><td><b>O que vai mudar</b></td><td>Ao escolher "Confirmar" em "Minhas reservas", liberar a Sala 1 às 10h também em "Consultar horários". Se escolher "Voltar", manter tudo como está.</td></tr>
@@ -584,7 +646,7 @@ Obrigado, Francisco (time do app)</pre>
 
   <h3 data-n="4">Protótipo das duas telas e testes (Confirmar e Voltar)</h3>
   <div class="lab">
-    <div>
+    <div class="lab-device">
       <div class="switch" id="a5-switch">
         <button class="on" data-v="bug">1ª demonstração (com falha)</button>
         <button data-v="ok">Versão corrigida</button>
@@ -593,12 +655,12 @@ Obrigado, Francisco (time do app)</pre>
       <div class="phone">
         <div class="sub-screen">
           <div class="bar"><span>Minhas reservas</span><span>Ana</span></div>
-          <div style="font-size:.88rem;margin-bottom:.5rem">
-            <b>Sala 1 · 10:00</b><br>
-            Reserva: <span class="tag no" id="a5-ana-tag">Ativa</span>
+          <div style="font-size:.88rem;margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center">
+            <b>Sala 1 · 10:00</b>
+            <span class="tag no" id="a5-ana-tag">Ativa</span>
           </div>
           <button class="phone-btn danger" id="a5-start-cancel">Cancelar reserva</button>
-          <div id="a5-choice-box" style="display:none;margin-top:.55rem;padding:.6rem;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:.85rem">
+          <div id="a5-choice-box" style="display:none;margin-top:.55rem;padding:.65rem;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:.84rem">
             Confirmar o cancelamento da Sala 1 às 10:00?
             <div class="btn-row">
               <button class="phone-btn muted" id="a5-back-btn">Voltar</button>
@@ -610,8 +672,8 @@ Obrigado, Francisco (time do app)</pre>
 
         <div class="sub-screen">
           <div class="bar"><span>Consultar horários</span><span>Estudante</span></div>
-          <div style="font-size:.88rem;margin-bottom:.45rem">
-            <b>Sala 1 · 10:00</b> — consulta de outro estudante
+          <div style="font-size:.86rem;margin-bottom:.45rem;color:var(--ink-soft)">
+            <b style="color:var(--ink)">Sala 1 · 10:00</b> — consulta de outro estudante
           </div>
           <button class="phone-btn" id="a5-check-btn">Consultar Sala 1 (10:00)</button>
           <div class="screen-out no" id="a5-peer-out" style="min-height:48px;margin-top:.6rem">Ocupada</div>
@@ -656,16 +718,24 @@ Obrigado, Francisco (time do app)</pre>
         </div>
       </div>
 
-      <div class="box" style="margin-top:.85rem">
+      <div class="box" style="margin-top:.9rem">
         <span class="label">Troca de funções entre os casos de teste</span>
         <p><b>Caso A — Confirmar:</b> Ana = Daniel · Outro estudante = Kaio · Aplicativo = Francisco.</p>
         <p><b>Caso B — Voltar:</b> Ana = Francisco · Outro estudante = Daniel · Aplicativo = Kaio.</p>
       </div>
     </div>
   </div>
+
+  <div class="panel-nav">
+    <button class="panel-nav-btn" data-goto="atv4">← Anterior: Atividade 04</button>
+    <a class="panel-nav-btn primary" href="pages/atividades-06-a-12.html">Ir para Parte 2 (Atividades 06–12) →</a>
+  </div>
 </section>
 
-<footer>Engenharia de Software · Alunos: Daniel Alves, Kaio Costa e Francisco Breno</footer>
+<footer>
+  <span>Engenharia de Software · Alunos: Daniel Alves, Kaio Costa e Francisco Breno</span>
+  <span>Parte 1 · Atividades 01–05</span>
+</footer>
 </main>
 
 <script src="assets/js/core.js"></script>

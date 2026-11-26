@@ -6,9 +6,24 @@ const $$ = (s, r = document) => [...r.querySelectorAll(s)];
 const sleep = ms => new Promise(res => setTimeout(res, ms));
 
 function openTab(tabId) {
-  $$('nav button').forEach(x => x.classList.toggle('active', x.dataset.tab === tabId));
+  let activeBtn = null;
+  $$('nav button').forEach(x => {
+    const isActive = x.dataset.tab === tabId;
+    x.classList.toggle('active', isActive);
+    if (isActive) activeBtn = x;
+  });
   $$('.panel').forEach(p => p.classList.toggle('active', p.id === tabId));
+  if (activeBtn && window.matchMedia('(max-width: 920px)').matches) {
+    activeBtn.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+  }
   window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function updateProgressBar(executed, total) {
+  const fill = $('#global-progress');
+  if (!fill) return;
+  const pct = total > 0 ? Math.min(100, Math.round((executed / total) * 100)) : 0;
+  fill.style.width = `${pct}%`;
 }
 
 function initNavigation() {
@@ -16,6 +31,14 @@ function initNavigation() {
   document.addEventListener('click', e => {
     const gotoEl = e.target.closest('[data-goto]');
     if (gotoEl) openTab(gotoEl.dataset.goto);
+  });
+  document.addEventListener('keydown', e => {
+    if (e.key !== 'Enter' && e.key !== ' ') return;
+    const gotoEl = e.target.closest('[data-goto]');
+    if (gotoEl && gotoEl.tagName !== 'BUTTON' && gotoEl.tagName !== 'A') {
+      e.preventDefault();
+      openTab(gotoEl.dataset.goto);
+    }
   });
 }
 

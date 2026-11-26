@@ -51,6 +51,7 @@ function updateScores() {
       ? '0 de 12 testados'
       : `${totalExecuted} de 12 testados · ${totalPassed} passaram`;
   }
+  updateProgressBar(totalExecuted, 12);
 }
 
 const { report, resetTest, runGroup, bindButtons } = createTestSuite({
@@ -210,7 +211,7 @@ function renderFiltro() {
   }
 
   listEl.innerHTML = items.map(s =>
-    `<div>${s.hora} <span class="tag ${s.livre ? 'ok' : 'no'}">${s.livre ? 'Livre' : 'Ocupado'}</span></div>`
+    `<div style="display:flex;justify-content:space-between;align-items:center"><span>${s.hora}</span><span class="tag ${s.livre ? 'ok' : 'no'}">${s.livre ? 'Livre' : 'Ocupado'}</span></div>`
   ).join('');
 
   const resumo = items.map(s => `${s.hora} (${s.livre ? 'Livre' : 'Ocupado'})`).join(', ');
@@ -256,6 +257,12 @@ function setLVersion(v) {
 setupSwitch('l-switch', d => setLVersion(d.v));
 
 function runLembrete(cenario) {
+  const mapBtn = { reag: 'l-sc-reag', lim30: 'l-sc-lim30', lim29: 'l-sc-lim29' };
+  Object.entries(mapBtn).forEach(([k, id]) => {
+    const el = $('#' + id);
+    if (el) el.classList.toggle('sel', k === cenario);
+  });
+
   let msg = '';
   let cls = 'ok';
 
