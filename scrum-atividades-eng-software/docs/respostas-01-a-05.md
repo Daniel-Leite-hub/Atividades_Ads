@@ -1,4 +1,4 @@
-# Respostas das Atividades de Scrum (01 a 04)
+# Respostas das Atividades de Scrum (01 a 05)
 
 **Disciplina:** Engenharia de Software  
 **Alunos:** Daniel Alves · Kaio Costa · Francisco Breno  
@@ -128,3 +128,49 @@
 ### 3. Fluxo de cancelamento e verificação do impedimento
 - **Fluxo simulado (Sala 1 às 10:00):** Estudante toca em *Cancelar reserva* → confirma → app mostra *"Reserva cancelada"* → outro estudante consulta a Sala 1 e vê **10:00 livre**.
 - **Como conferir se o acesso voltou:** Amanhã de manhã o Developer tenta fazer login no ambiente de teste com a conta de teste. Se entrar, o impedimento é fechado e o trio executa em seguida os testes de cancelar a Sala 1 às 10h e consultar o horário em outra conta.
+
+---
+
+## Atividade 05 — Time Scrum
+
+### Cenário e Meta da Sprint
+- **Cenário:** O app já consulta horários e reserva salas; o acesso aos testes voltou e o cancelamento foi retomado. A **Sala 1 está reservada por Ana às 10h**.
+- **Meta da Sprint:** Permitir que Ana cancele sua reserva e que outro estudante consiga ver o horário liberado na consulta.
+
+### 1. Responsabilidades no Time Scrum
+- **Product Owner:** Daniel Alves — Explica que Ana espera cancelar sua reserva (ou voltar se desistir) e que outro estudante precisa ver a Sala 1 às 10h livre assim que ela confirmar.
+- **Scrum Master:** Kaio Costa — Conduz uma conversa curta para que todos contribuam e percebam como "Minhas reservas" e "Consultar horários" dependem uma da outra.
+- **Representante dos Developers:** Francisco Breno — Propõe a sequência do trabalho (definir comportamento → desenhar as telas → conferir o fluxo) e organiza como o trio prototipa e testa em conjunto.
+
+### 2. Plano inicial da Sprint e protótipo das duas telas
+| Ação no plano | Quem conduz | Quem pode ajudar |
+| :--- | :--- | :--- |
+| 1. Definir o comportamento (estado inicial, Confirmar e Voltar) | Daniel (PO) | Kaio e Francisco |
+| 2. Desenhar as duas telas ("Minhas reservas" e "Consultar horários") | Francisco (Dev) | Daniel e Kaio |
+| 3. Conferir o fluxo entre as duas telas com testes | Kaio (SM) | Francisco e Daniel |
+
+- **Estado inicial das duas telas:**
+  - **Minhas reservas (Ana):** Sala 1 · 10:00 aparece como **Ativa**, com o botão *Cancelar reserva* (que abre *Confirmar* e *Voltar*).
+  - **Consultar horários (outro estudante):** Sala 1 · 10:00 aparece como **Ocupada**.
+- **Comportamento esperado após a escolha de Ana:**
+  - Ao escolher **Confirmar**: "Minhas reservas" exibe **Cancelada** e "Consultar horários" exibe **Livre**.
+  - Ao escolher **Voltar**: "Minhas reservas" mantém **Ativa** e "Consultar horários" mantém **Ocupada**.
+
+### 3. Inconsistência na 1ª demonstração e plano ajustado
+- **Falha reproduzida:** Ana clicou em *Confirmar*; "Minhas reservas" mostrou a reserva como **Cancelada**, mas "Consultar horários" continuou mostrando a Sala 1 às 10h como **Ocupada**.
+- **Conversa do Time Scrum:**
+  - **Daniel (PO):** explicou que outro estudante vê a sala ocupada mesmo após o cancelamento, impedindo o uso da sala e quebrando a Meta da Sprint.
+  - **Kaio (SM):** perguntou o que precisava mudar entre as telas e como o trio poderia se ajudar na correção.
+  - **Francisco (Dev):** ajustou o plano para ligar a confirmação do cancelamento à atualização da consulta.
+- **Registro do plano ajustado:**
+  - **O que vai mudar:** ao clicar em *Confirmar* em "Minhas reservas", atualizar imediatamente a Sala 1 às 10h para **Livre** em "Consultar horários" (e manter **Ocupada** quando clicar em *Voltar*).
+  - **Quem ajuda a corrigir:** Francisco corrige a regra do protótipo com apoio de Daniel na revisão dos textos das duas telas.
+  - **Quem confere o resultado:** todo o trio nos dois casos de teste, trocando as funções entre o Caso A e o Caso B.
+
+### 4. Resultados dos testes corrigidos (com troca de funções)
+- **Caso A — Confirmar:** *(Ana = Daniel · Outro estudante = Kaio · Aplicativo = Francisco)*
+  - Início: reserva de Ana **Ativa** e Sala 1 às 10h **Ocupada**.
+  - Resultado obtido: "Minhas reservas" exibiu **Cancelada** e "Consultar horários" exibiu **Livre**. (**PASSOU**)
+- **Caso B — Voltar:** *(Ana = Francisco · Outro estudante = Daniel · Aplicativo = Kaio)*
+  - Início: reserva de Ana **Ativa** e Sala 1 às 10h **Ocupada**.
+  - Resultado obtido: "Minhas reservas" manteve **Ativa** e "Consultar horários" manteve **Ocupada**. (**PASSOU**)

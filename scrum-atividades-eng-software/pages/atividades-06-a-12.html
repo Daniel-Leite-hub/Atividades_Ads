@@ -1,0 +1,623 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Scrum na Biblioteca — Atividades 06 a 12</title>
+  <link rel="stylesheet" href="../assets/css/style.css">
+</head>
+<body>
+
+<aside>
+  <div class="brand">
+    <small>Engenharia de Software</small>
+    <h1>Scrum na Biblioteca</h1>
+  </div>
+  <nav>
+    <button class="active" data-tab="inicio"><span>00</span>Início (06–12)</button>
+    <button data-tab="eventos"><span>06–10</span>Eventos do Scrum</button>
+    <button data-tab="backlog"><span>11</span>Product Backlog</button>
+    <button data-tab="stories"><span>12</span>User Stories e DoD</button>
+    <a class="nav-ext" href="../index.html"><span>← Atividades 01–05</span><span></span></a>
+  </nav>
+  <div class="team">
+    <strong>Alunos</strong>
+    Daniel Alves · Kaio Costa · Francisco Breno
+  </div>
+</aside>
+
+<main>
+
+<!-- ================= INÍCIO ================= -->
+<section class="panel active" id="inicio">
+  <span class="kicker">Atividades práticas em trio · Parte 2</span>
+  <h2>Eventos, Product Backlog e User Stories</h2>
+  <p class="lead">
+    Continuação do aplicativo da biblioteca (Sala 1): reagendamento de reservas (Atividades 06 a 10),
+    construção e refinamento do Product Backlog (Atividade 11) e User Stories, cenários e Definição de Pronto (Atividade 12).
+  </p>
+
+  <div class="test-bar">
+    <div>
+      <strong>Testes das atividades 06 a 12</strong>
+      <small id="global-status">0 de 12 testados</small>
+    </div>
+    <div class="test-bar-actions">
+      <button class="run-all-btn" id="global-run-all">▶ Executar todos (12)</button>
+      <button class="subtle-btn dark" id="global-reset-all">↺ Limpar</button>
+    </div>
+  </div>
+
+  <div class="activity-cards">
+    <div class="act-card" data-goto="eventos">
+      <div>
+        <div class="act-card-header">
+          <span class="label">Atividades 06 a 10</span>
+          <span class="tag wait" id="card-status-ev">0 / 3</span>
+        </div>
+        <h4>Eventos do Scrum na prática</h4>
+        <p>Ordem 06 → 07 → 09 → 08 → 10: linha do tempo, Planejamento (5 períodos), Daily com falha e ajuste, Review e Retrospectiva.</p>
+      </div>
+      <div class="act-card-footer">
+        <span>3 testes</span>
+        <span>Abrir →</span>
+      </div>
+    </div>
+
+    <div class="act-card" data-goto="backlog">
+      <div>
+        <div class="act-card-header">
+          <span class="label">Atividade 11</span>
+          <span class="tag wait" id="card-status-pb">0 / 2</span>
+        </div>
+        <h4>Product Backlog na prática</h4>
+        <p>Análise dos 5 relatos, fichas PB-01, PB-L e PB-F, ordenação, Sprint Backlog (3 períodos) e ajuste com duas datas.</p>
+      </div>
+      <div class="act-card-footer">
+        <span>2 testes</span>
+        <span>Abrir →</span>
+      </div>
+    </div>
+
+    <div class="act-card" data-goto="stories">
+      <div>
+        <div class="act-card-header">
+          <span class="label">Atividade 12</span>
+          <span class="tag wait" id="card-status-us">0 / 7</span>
+        </div>
+        <h4>User Stories, Cenários e Pronto</h4>
+        <p>Fichas com INVEST, 8 cenários Dado/Quando/Então, regra dos 30 minutos no lembrete e avaliação da DoD.</p>
+      </div>
+      <div class="act-card-footer">
+        <span>7 testes</span>
+        <span>Abrir →</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="legend">
+    <span><span class="tag ok">PASSOU</span> funcionou como esperado</span>
+    <span><span class="tag no">FALHOU</span> falha reproduzida da simulação</span>
+    <span><span class="tag wait">NÃO EXECUTADO</span> pendente de teste</span>
+  </div>
+</section>
+
+<!-- ================= ATIVIDADES 06 A 10 ================= -->
+<section class="panel" id="eventos">
+  <span class="kicker">Atividades 06 a 10 · Eventos do Scrum (ordem 06 → 07 → 09 → 08 → 10)</span>
+  <h2>Reagendamento de reserva na Sala 1</h2>
+  <p class="lead">
+    Dados usados em todos os testes: na Sala 1, <b>10h</b> está reservada por <b>Ana</b>, <b>11h</b> está <b>livre</b> e <b>14h</b> está reservada por <b>Bruno</b>.
+    A Daily (09) vem antes da Review (08) para usarmos o plano ajustado na demonstração.
+  </p>
+
+  <h3 data-n="06">Cerimônias e linha do tempo da Sprint</h3>
+  <div class="box">
+    <p><b>Papéis iniciais:</b> Product Owner: <b>Daniel Alves</b> · Scrum Master: <b>Kaio Costa</b> · Developers (rep.): <b>Francisco Breno</b>.</p>
+    <span class="label" style="margin-top:.8rem">Sprint (Segunda a Sexta-feira) e perguntas de cada evento</span>
+    <div class="timeline">
+      <div class="t-step">
+        <small>Segunda · Início</small>
+        <strong>Planejamento</strong>
+        <p>"O que queremos permitir que Ana faça até sexta e o que cabe nos 5 períodos?"</p>
+      </div>
+      <div class="t-step">
+        <small>Seg a Sex (encenada Qua)</small>
+        <strong>Reunião Diária</strong>
+        <p>"O que avançou, o que travou nas duas telas e o que ajustar hoje para salvar a meta?"</p>
+      </div>
+      <div class="t-step">
+        <small>Sexta · Perto do fim</small>
+        <strong>Review da Sprint</strong>
+        <p>"O reagendamento atendeu à necessidade de Ana e o que o estudante sugere depois?"</p>
+      </div>
+      <div class="t-step">
+        <small>Sexta · Encerramento</small>
+        <strong>Retrospectiva</strong>
+        <p>"Por que notamos tarde o erro entre as telas e o que vamos melhorar na próxima Sprint?"</p>
+      </div>
+    </div>
+  </div>
+
+  <h3 data-n="07">Planejamento da Sprint (capacidade: 5 períodos)</h3>
+  <div class="cols">
+    <div class="box">
+      <span class="label">Meta da Sprint</span>
+      <p class="quote">Permitir que Ana troque sua reserva para um horário livre, preservando a reserva original se o destino estiver ocupado.</p>
+      <span class="label" style="margin-top:.8rem">Seleção inicial (4 de 5 períodos)</span>
+      <ol class="backlog">
+        <li><div><b>A. Reagendamento básico</b><small>Trocar 10h→11h e bloquear 10h→14h nas duas telas.</small></div><span class="tag ok">3 períodos</span></li>
+        <li><div><b>B. Confirmação detalhada</b><small>Mostrar sala e novo horário ao concluir (depende de A).</small></div><span class="tag ok">1 período</span></li>
+        <li><div><b>C. Histórico de alterações</b><small>Adiado: somaria 6 períodos (passa de 5) e depende de A.</small></div><span class="tag wait">2 · fora</span></li>
+      </ol>
+    </div>
+    <div class="box">
+      <span class="label">Plano inicial de trabalho</span>
+      <ul style="margin-left:1.2rem">
+        <li>Desenhar "Minhas reservas" com o botão <b>Reagendar</b> e a tela "Consultar horários".</li>
+        <li>Definir regra: se o novo horário for livre, mover reserva; se ocupado, manter 10h.</li>
+        <li>Executar os dois testes (10h → 11h livre e 10h → 14h ocupado).</li>
+      </ul>
+      <p style="margin-top:.8rem"><b>Conferência do SM (Kaio):</b> o plano usa 4 de 5 períodos, cabe no tempo e cobre as duas situações.</p>
+    </div>
+  </div>
+
+  <h3 data-n="09">Reunião Diária (Quarta) e ajuste do plano</h3>
+  <div class="box">
+    <p><b>Falha observada na quarta:</b> ao trocar das 10h para as 11h, "Minhas reservas" mostrou 11h, mas "Consultar horários" continuou marcando <b>10h como ocupada</b>. A correção e novos testes acrescentam <b>+2 períodos</b> ao item A (que sobe de 3 para <b>5 períodos</b>).</p>
+    <p><b>Encenação da Daily (2 min · Developers: Daniel e Francisco · Observador: Kaio):</b></p>
+    <ul style="margin-left:1.2rem;margin-top:.35rem">
+      <li><b>Avançou:</b> a troca na tela de Ana já funciona; <b>Impede:</b> a consulta não libera as 10h; <b>Ação agora:</b> corrigir a atualização da consulta e repetir os testes. <i>(Kaio anotou: conversa terminou com próxima ação clara.)</i></li>
+    </ul>
+    <p style="margin-top:.55rem"><b>Renegociação pós-Daily (PO Daniel + Dev Francisco):</b> como A passou para <b>5 períodos</b>, <b>adiamos o item B (Confirmação detalhada, 1 período)</b> para a próxima Sprint. Primeiro corrigimos o vínculo entre as telas; Francisco e Daniel conferem os dois testes.</p>
+  </div>
+
+  <div class="lab">
+    <div>
+      <div class="switch" id="ev-switch">
+        <button class="on" data-v="bug">1ª versão (com falha)</button>
+        <button data-v="ok">Protótipo corrigido</button>
+      </div>
+
+      <div class="phone">
+        <div class="sub-screen">
+          <div class="bar"><span>Minhas reservas</span><span>Ana</span></div>
+          <div style="font-size:.88rem;margin-bottom:.45rem">
+            Reserva atual: <b id="ev-ana-slot">Sala 1 · 10:00</b>
+          </div>
+          <div style="font-size:.82rem;color:var(--ink-soft);margin-bottom:.35rem">Trocar para:</div>
+          <div class="btn-row">
+            <button class="phone-btn" id="ev-pick-11">11:00</button>
+            <button class="phone-btn" id="ev-pick-14">14:00</button>
+          </div>
+          <button class="phone-btn danger" id="ev-reagendar" style="margin-top:.5rem">Reagendar para <span id="ev-target-lbl">11:00</span></button>
+          <div class="screen-out" id="ev-ana-out" style="min-height:48px;margin-top:.55rem">Reserva de Ana às 10:00</div>
+        </div>
+
+        <div class="sub-screen">
+          <div class="bar"><span>Consultar horários</span><span>Sala 1</span></div>
+          <div style="font-size:.86rem;display:grid;gap:.35rem">
+            <div>10:00 <span class="tag no" id="ev-s10">Ocupado (Ana)</span></div>
+            <div>11:00 <span class="tag ok" id="ev-s11">Livre</span></div>
+            <div>14:00 <span class="tag no" id="ev-s14">Ocupado (Bruno)</span></div>
+          </div>
+        </div>
+        <button class="subtle-btn" id="ev-reset" style="margin-top:.7rem;width:100%">↺ Dados iniciais</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="summary">
+        <span>Testes do reagendamento (Ativ. 09)</span>
+        <button class="run-all-btn" data-group="ev">▶ Executar todos (3)</button>
+        <span class="score" id="ev-score">0 / 3</span>
+      </div>
+
+      <div class="test" data-test="ev-t1">
+        <header><b>1ª VERSÃO</b><h4>Trocar 10h → 11h na quarta (falha observada)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> na 1ª versão, reagendar de 10:00 para 11:00</div>
+          <div><strong>Esperado:</strong> Ana em 11:00 e 10:00 livre na consulta</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+        <div class="note">Falha reproduzida da Daily: "Minhas reservas" mudou para 11h, mas "Consultar horários" manteve 10h ocupada.</div>
+      </div>
+
+      <div class="test" data-test="ev-t2">
+        <header><b>TESTE 1</b><h4>Trocar 10h → 11h livre (corrigido)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> começar com dados iniciais e reagendar 10:00 → 11:00</div>
+          <div><strong>Esperado:</strong> Ana em 11:00 · 10:00 Livre, 11:00 Ocupado, 14:00 Ocupado</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="ev-t3">
+        <header><b>TESTE 2</b><h4>Tentar trocar 10h → 14h ocupado (corrigido)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> começar com dados iniciais e tentar reagendar 10:00 → 14:00</div>
+          <div><strong>Esperado:</strong> aviso de ocupado; Ana fica em 10:00; 10h e 14h Ocupados, 11h Livre</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 data-n="08">Review da Sprint</h3>
+  <div class="cols">
+    <div class="box">
+      <span class="label">Demonstração e conversa com estudante</span>
+      <p><b>Resultado demonstrado:</b> reagendamento básico concluído (Testes 1 e 2 passaram). <b>Pendências:</b> itens B e C adiados.</p>
+      <p><b>Feedback do estudante (Kaio encenando):</b> <i>"Vi que mudou, mas tive que abrir Minhas reservas para conferir o novo horário. Um lembrete também ajudaria."</i></p>
+      <p><b>Pergunta do PO (Daniel):</b> "Em que momento sentiu falta?" — <b>Resposta:</b> logo após confirmar, só apareceu "Reserva alterada", e depois é fácil esquecer o novo horário.</p>
+    </div>
+    <div class="box">
+      <span class="label">Decisão sobre o Product Backlog</span>
+      <ul style="margin-left:1.2rem">
+        <li><b>1º entre os pendentes:</b> <b>Confirmação detalhada (PB-01)</b> — já estava no backlog; só exige ajustar a mensagem para mostrar sala e horário (Francisco).</li>
+        <li><b>Item novo:</b> <b>Lembrete de reserva</b> entra no Product Backlog para análise e refinamento após a confirmação detalhada.</li>
+        <li><b>Histórico:</b> permanece depois dos dois por ter menor urgência agora.</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3 data-n="10">Retrospectiva da Sprint</h3>
+  <div class="cols">
+    <div class="box">
+      <span class="label">Fatos da Sprint e classificação</span>
+      <p><b>Dificuldade:</b> testar o reagendamento sem conferir as duas telas juntas desde o começo.</p>
+      <p><b>Prática a preservar:</b> conferir "Minhas reservas" e "Consultar horários" lado a lado com dados fixos.</p>
+      <p style="margin-top:.55rem"><b>Classificação dos assuntos:</b></p>
+      <ul style="margin-left:1.2rem">
+        <li><i>"Mostrar sala e novo horário na confirmação"</i> → <b>Review / Product Backlog</b> (melhoria do produto).</li>
+        <li><i>"Conferir as telas em conjunto antes da demonstração"</i> → <b>Retrospectiva</b> (forma de trabalhar do time).</li>
+      </ul>
+    </div>
+    <div class="box">
+      <span class="label">Melhoria verificável para a próxima Sprint</span>
+      <p class="quote">
+        "Vamos conferir todas as telas afetadas em dupla antes da primeira demonstração. Francisco (Developers) vai combinar a execução até o início da implementação na próxima Sprint. Vamos verificar se ajudou olhando o registro dos testes conjuntos antes da Daily, sem falhas de sincronização na demonstração."
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ATIVIDADE 11 ================= -->
+<section class="panel" id="backlog">
+  <span class="kicker">Atividade 11 · Product Backlog na prática</span>
+  <h2>Dos relatos ao Sprint Backlog</h2>
+  <p class="lead">
+    PO: Daniel Alves · SM: Kaio Costa · Developers: Francisco Breno.
+    Análise dos 5 relatos (R1 a R5), criação e ordenação das fichas e ajuste final com reservas em duas datas.
+  </p>
+
+  <h3 data-n="1">Tratamento dos 5 relatos</h3>
+  <div class="box table-wrap">
+    <table class="roles">
+      <tr><th>Relato</th><th>Necessidade / Problema</th><th>Encaminhamento</th><th>Justificativa e dúvida</th></tr>
+      <tr>
+        <td><b>R1 Ana</b></td>
+        <td>Após reagendar, não viu qual sala e horário ficaram confirmados.</td>
+        <td><b>Refinar item <code>PB-01</code></b></td>
+        <td><code>PB-01</code> já trata da confirmação. <i>Hipótese a confirmar:</i> se precisa também mostrar a data (confirmada na etapa 5).</td>
+      </tr>
+      <tr>
+        <td><b>R2 Bruno</b></td>
+        <td>Esqueceu o novo horário após trocar; biblioteca confirmou lembrete 30 min antes.</td>
+        <td><b>Item novo <code>PB-L</code></b></td>
+        <td>Nova funcionalidade de notificação. <i>Dúvida:</i> o que fazer se a troca ocorrer faltando menos de 30 min.</td>
+      </tr>
+      <tr>
+        <td><b>R3 Júlia</b></td>
+        <td>Muitos horários ocupados atrapalham achar uma sala livre.</td>
+        <td><b>Item novo <code>PB-F</code></b></td>
+        <td>Filtro opcional mantendo a lista completa. <i>Dúvida:</i> como voltar à lista completa e o que mostrar se tudo estiver ocupado.</td>
+      </tr>
+      <tr>
+        <td><b>R4 Equipe</b></td>
+        <td>Conferir telas em dupla antes de demonstrar evita divergência.</td>
+        <td><b>Melhoria de trabalho</b></td>
+        <td>Não é requisito do usuário; entra nos combinados do time na <b>Retrospectiva / DoD</b>.</td>
+      </tr>
+      <tr>
+        <td><b>R5 Coordenação</b></td>
+        <td>"A tela precisa ficar mais moderna" (vago, sem dificuldade observada).</td>
+        <td><b>Pedir esclarecimento</b></td>
+        <td><i>Pergunta:</i> "Qual dificuldade foi observada na tela atual e o que precisa mudar para melhorar o uso?"</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 data-n="2">Product Backlog ordenado e fichas detalhadas</h3>
+  <div class="box">
+    <span class="label">Meta do Produto</span>
+    <p class="quote">Tornar a consulta e o acompanhamento de reservas mais claros para que o estudante encontre vagas e não perca sua sala.</p>
+    <p style="font-size:.9rem;margin-top:.4rem"><b>Justificativa da ordem:</b> <code>PB-01</code> (1º) resolve dúvida imediata após reagendar com apenas 1 período e sem bloqueios; <code>PB-F</code> (2º) ajuda a achar salas livres rápido também com 1 período; <code>PB-L</code> (3º) tem dúvida pendente sobre trocas &lt;30 min e custa 2 períodos; <code>PB-02</code> fica em 4º.</p>
+  </div>
+
+  <div class="cols">
+    <div class="box">
+      <span class="label">1º · PB-01 · Exibir sala, data e horário na confirmação (1 período)</span>
+      <p><b>Origem e valor (R1):</b> evita que Ana tenha de abrir outra tela para conferir a troca.</p>
+      <p><b>Requisito funcional (atualizado no passo 5):</b> após reagendar com sucesso, o aplicativo deve exibir a <b>sala, a data e o novo horário</b> da reserva alterada.</p>
+      <p><b>Critérios verificáveis:</b><br>
+      • <b>C1 (atualizado):</b> com reservas em <code>10/11</code> e <code>12/11</code> às 10h, ao trocar <code>10/11</code> para 11h, a confirmação mostra <code>Sala 1 · 10/11 · 11h</code>.<br>
+      • <b>C2:</b> se o destino estiver ocupado (14h), informa indisponibilidade e mantém <code>10/11 · 10h</code> sem confirmar sucesso.</p>
+    </div>
+
+    <div class="box">
+      <span class="label">2º · PB-F · Filtrar horários livres na consulta (1 período)</span>
+      <p><b>Origem e valor (R3):</b> reduz tempo de busca de Júlia sem esconder a lista completa.</p>
+      <p><b>Requisito funcional:</b> na consulta de sala e data, permitir ativar o filtro "Só livres" e voltar à lista completa.</p>
+      <p><b>Critérios verificáveis:</b><br>
+      • <b>C1:</b> em <code>10/11</code> (10h e 14h ocupados, 11h livre), filtro mostra só <code>11h</code> e botão permite voltar.<br>
+      • <b>C2:</b> em <code>12/11</code> (todos ocupados), filtro mostra mensagem de nenhum horário livre.</p>
+    </div>
+  </div>
+
+  <div class="cols">
+    <div class="box">
+      <span class="label">3º · PB-L · Enviar lembrete antes do horário vigente (2 períodos)</span>
+      <p><b>Origem e valor (R2):</b> evita que Bruno esqueça a reserva após reagendar.</p>
+      <p><b>Requisito funcional:</b> enviar notificação 30 min antes do horário vigente de reserva ativa com sala, data e horário.</p>
+      <p><b>Critérios:</b> C1: reserva ativa/reagendada envia 30 min antes do horário vigente (sem envio do antigo); C2: reserva cancelada antes não envia.</p>
+      <p><b>Dúvida aberta:</b> o que fazer se reagendar faltando menos de 30 min.</p>
+    </div>
+
+    <div class="box">
+      <span class="label">4º · PB-02 · Mostrar histórico de reagendamentos (2 períodos)</span>
+      <p>Mantido com a descrição inicial ("Mostrar ao estudante o histórico de reagendamentos"). Será detalhado depois, pois tem menor prioridade frente à confirmação imediata, ao filtro e ao lembrete.</p>
+    </div>
+  </div>
+
+  <h3 data-n="3">Sprint Backlog (capacidade: 3 períodos) e passo 5</h3>
+  <div class="box">
+    <p><b>Meta da Sprint:</b> Eliminar a dúvida de quem acabou de reagendar e facilitar a busca por horários livres.</p>
+    <p><b>Selecionados (2 de 3 períodos):</b> <code>PB-01</code> (1 período) + <code>PB-F</code> (1 período). <b>Ficaram fora:</b> <code>PB-L</code> (2 períodos — dúvida aberta de &lt;30 min e passaria ou zeraria folga) e <code>PB-02</code> (2 períodos).</p>
+    <table class="roles" style="margin-top:.6rem">
+      <tr><th>ID</th><th>Ação do plano dos Developers</th><th>Resultado que a ação produz</th></tr>
+      <tr><td>PB-01</td><td>Ajustar confirmação para buscar sala, <b>data (passo 5)</b> e novo horário da reserva alterada.</td><td>Mensagem exibe <code>Sala 1 · 10/11 · 11h</code> sem pegar a data <code>12/11</code>.</td></tr>
+      <tr><td>PB-01</td><td>Testar troca com duas datas (<code>10/11</code> e <code>12/11</code>) e tentativa em horário ocupado (<code>14h</code>).</td><td>Registro da tela de confirmação e preservação da reserva original.</td></tr>
+      <tr><td>PB-F</td><td>Adicionar opção "Só livres" / "Ver todos" e tratar dia sem vagas na consulta.</td><td><code>10/11</code> exibe só <code>11h</code>; <code>12/11</code> mostra aviso de falta de vagas.</td></tr>
+    </table>
+    <p style="font-size:.9rem;margin-top:.6rem"><b>Efeito do passo 5 (nova informação sobre a data):</b> <code>PB-01</code> já estava na Sprint e manteve <b>1 período</b>; atualizamos o requisito, o Critério 1 e o plano de teste no Sprint Backlog preservando a Meta da Sprint.</p>
+  </div>
+
+  <h3 data-n="4">Simulação de PB-01 com duas datas (<code>10/11</code> e <code>12/11</code>)</h3>
+  <div class="lab">
+    <div class="phone">
+      <div class="bar"><span>Reagendar</span><span>Ana</span></div>
+      <div style="font-size:.84rem;color:var(--ink-soft);margin-bottom:.4rem">Reservas ativas de Ana às 10:00:</div>
+      <div class="slot sel" style="cursor:default"><b>Sala 1 · 10/11 · 10:00</b><span class="tag ok">selecionada</span></div>
+      <div class="slot" style="cursor:default">Sala 1 · 12/11 · 10:00 <span class="tag wait">outra data</span></div>
+      <div class="btn-row">
+        <button class="phone-btn" id="pb-try-11">Trocar 10/11 → 11h</button>
+        <button class="phone-btn danger" id="pb-try-14">Trocar 10/11 → 14h</button>
+      </div>
+      <div class="screen-out" id="pb-out" style="min-height:60px;margin-top:.7rem">Escolha um destino para a reserva de 10/11</div>
+      <button class="subtle-btn" id="pb-reset" style="margin-top:.7rem;width:100%">↺ Reiniciar</button>
+    </div>
+
+    <div>
+      <div class="summary">
+        <span>Testes do Sprint Backlog (Ativ. 11)</span>
+        <button class="run-all-btn" data-group="pb">▶ Executar todos (2)</button>
+        <span class="score" id="pb-score">0 / 2</span>
+      </div>
+
+      <div class="test" data-test="pb-t1">
+        <header><b>PB-01 · C1</b><h4>Confirmar troca em 10/11 exibindo a data correta</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> trocar a reserva de <code>10/11</code> (10:00) para <code>11:00</code></div>
+          <div><strong>Esperado:</strong> confirmação mostrar <code>Sala 1 · 10/11 · 11:00</code> (não <code>12/11</code>)</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="pb-t2">
+        <header><b>PB-01 · C2</b><h4>Bloquear troca de 10/11 para 14:00 (ocupado)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> tentar trocar <code>10/11</code> (10:00) para <code>14:00</code></div>
+          <div><strong>Esperado:</strong> avisar indisponibilidade e manter <code>Sala 1 · 10/11 · 10:00</code></div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ATIVIDADE 12 ================= -->
+<section class="panel" id="stories">
+  <span class="kicker">Atividade 12 · User Stories, Cenários e Definição de Pronto</span>
+  <h2>Filtro (<code>PB-F</code>), Lembrete (<code>PB-L</code>) e DoD</h2>
+  <p class="lead">
+    Fichas completas com Três Cs e INVEST, adaptação da regra de 30 minutos no lembrete,
+    os 8 cenários em Dado/Quando/Então, trecho do Sprint Backlog e avaliação da Definição de Pronto.
+  </p>
+
+  <h3 data-n="1">Fichas das duas histórias (com INVEST e adaptação)</h3>
+  <div class="cols">
+    <div class="box">
+      <span class="label">Ficha PB-F · Filtrar horários livres na consulta</span>
+      <p><b>Narrativa:</b> Como estudante que consulta uma sala, quero filtrar apenas os horários livres, para encontrar uma vaga sem percorrer horários ocupados.</p>
+      <p><b>Conversa (Relato de Júlia):</b><br>
+      • <i>Como voltar à lista completa?</i> Decisão: botão alterna "Só livres" e "Ver todos".<br>
+      • <i>E se tudo estiver ocupado?</i> Decisão: exibir "Nenhum horário livre nesta data".</p>
+      <p><b>Critérios:</b> <b>CA-F01</b> (10/11 exibe só 11h e volta à lista completa); <b>CA-F02</b> (12/11 exibe aviso de falta de vagas).</p>
+      <p><b>INVEST (resumo + melhoria):</b> I: independente de lembrete/histórico; N: formato do botão é negociável; V: agiliza busca; E: 1 período; S: cabe em uma Sprint; T: testável em 10/11 e 12/11. <b>Melhoria após INVEST:</b> trocamos "melhorar consulta" por perfil específico e limite claro de data sem vagas.</p>
+    </div>
+
+    <div class="box">
+      <span class="label">Ficha PB-L · Enviar lembrete da reserva vigente</span>
+      <p><b>Narrativa:</b> Como estudante com reserva ativa, quero receber um lembrete antes do horário vigente, para não esquecer a sala após reagendar.</p>
+      <p><b>Recorte de escopo:</b> sem e-mail, preferências individuais ou trocas após envio já feito. <b>Dependência:</b> registro da reserva vigente. <b>Dúvida real:</b> fuso/atraso de rede.</p>
+      <p><b>Critérios (atualizados na Etapa 3):</b><br>
+      • <b>CA-L01</b>: sem alteração, envia 1 vez 30 min antes (sala, data, horário).<br>
+      • <b>CA-L02</b>: reagendamento ≥ 30 min antes cancela envio antigo e envia 30 min antes do novo; se faltar <b>&lt; 30 min</b>, envia <b>imediatamente</b> 1 vez; com <b>exatos 30 min</b>, segue regra dos 30 min.<br>
+      • <b>CA-L03</b>: cancelada antes do envio não gera notificação.</p>
+      <p><b>INVEST pós-regra nova:</b> mantivemos tudo na <b>mesma história PB-L</b>, pois apenas completa a regra de tempo de um único lembrete sem criar nova funcionalidade.</p>
+    </div>
+  </div>
+
+  <h3 data-n="2">Trecho do Sprint Backlog de PB-L (Etapa 3)</h3>
+  <div class="box">
+    <p><b>Meta da Sprint:</b> Garantir que estudantes recebam um único lembrete correto do horário vigente, mesmo em trocas de última hora.</p>
+    <table class="roles" style="margin-top:.5rem">
+      <tr><th>ID</th><th>Tarefa dos Developers</th><th>Resultado esperado</th></tr>
+      <tr><td>PB-L</td><td>Implementar regra de envio imediato quando faltar &lt; 30 min e envio aos 30 min quando faltar = 30 min.</td><td>Notificação única enviada no momento exato com dados do novo horário.</td></tr>
+      <tr><td>PB-L</td><td>Cancelar envio anterior ao confirmar reagendamento ou cancelamento.</td><td>Nenhuma notificação emitida no horário da reserva antiga (ex.: 9h30 ou 11h30).</td></tr>
+      <tr><td>PB-L</td><td>Executar cenários de limite (<code>CT-L04</code>, <code>CT-L05</code>) e repetir reagendamento (<code>CT-L02</code>) e cancelamento (<code>CT-L03</code>).</td><td>Registro das notificações observadas no horário antigo e no novo.</td></tr>
+    </table>
+  </div>
+
+  <h3 data-n="3">Os 8 cenários (Dado · Quando · Então) e evidências da Etapa 4</h3>
+  <div class="box table-wrap">
+    <table class="roles">
+      <tr><th>Caso e vínculo</th><th>Dado / Quando / Então (resumo)</th><th>Resultado Etapa 4</th></tr>
+      <tr><td><b>CT-F01</b> · PB-F · CA-F01<br><small>Filtro em 10/11</small></td><td><b>Dado</b> 10/11 (10h/14h ocup., 11h livre) · <b>Quando</b> ativar "Só livres" · <b>Então</b> exibe só 11h.</td><td><span class="tag ok">Passou</span></td></tr>
+      <tr><td><b>CT-F02</b> · PB-F · CA-F02<br><small>Sem vagas em 12/11</small></td><td><b>Dado</b> 12/11 todos ocupados · <b>Quando</b> ativar "Só livres" · <b>Então</b> exibe "Nenhum horário livre".</td><td><span class="tag ok">Passou</span></td></tr>
+      <tr><td><b>CT-F03</b> · PB-F · CA-F01<br><small>Voltar à lista completa</small></td><td><b>Dado</b> filtro ligado em 10/11 · <b>Quando</b> tocar "Ver todos" · <b>Então</b> exibe 10h, 11h e 14h.</td><td><span class="tag ok">Passou</span></td></tr>
+      <tr><td><b>CT-L01</b> · PB-L · CA-L01<br><small>Sem alteração</small></td><td><b>Dado</b> Bruno Sala 1 10/11 10h · <b>Quando</b> der 9h30 · <b>Então</b> 1 aviso (Sala 1, 10/11, 10h).</td><td><span class="tag ok">Passou</span></td></tr>
+      <tr><td><b>CT-L02</b> · PB-L · CA-L02<br><small>Reagendada (8h50)</small></td><td><b>Dado</b> Bruno 10h · <b>Quando</b> troca 8h50 para 11h · <b>Então</b> nada às 9h30; 1 aviso às 10h30 (11h).</td><td><span class="tag no">Falhou (9h30 e 10h30)</span></td></tr>
+      <tr><td><b>CT-L03</b> · PB-L · CA-L03<br><small>Cancelada (8h50)</small></td><td><b>Dado</b> Bruno 10h · <b>Quando</b> cancela 8h50 · <b>Então</b> nenhuma notificação às 9h30.</td><td><span class="tag wait">Não executado</span></td></tr>
+      <tr><td><b>CT-L04</b> · PB-L · CA-L02<br><small>Limite = 30 min</small></td><td><b>Dado</b> Bruno 12h em 10/11 · <b>Quando</b> troca 10h30 para 11h · <b>Então</b> 1 aviso às 10h30 (11h); nada às 11h30.</td><td><span class="tag wait">Não executado</span></td></tr>
+      <tr><td><b>CT-L05</b> · PB-L · CA-L02<br><small>Limite 29 min</small></td><td><b>Dado</b> Bruno 12h em 10/11 · <b>Quando</b> troca 10h31 para 11h · <b>Então</b> 1 aviso imediato às 10h31 (11h); nada às 11h30.</td><td><span class="tag wait">Não executado</span></td></tr>
+    </table>
+  </div>
+
+  <h3 data-n="4">Protótipo 1: Filtro de horários (<code>PB-F</code>)</h3>
+  <div class="lab">
+    <div class="phone">
+      <div class="bar"><span>Consultar Sala 1</span><span id="f-date-lbl">10/11</span></div>
+      <div class="btn-row" style="margin-bottom:.6rem">
+        <button class="phone-btn" id="f-d10">10/11</button>
+        <button class="phone-btn muted" id="f-d12">12/11</button>
+      </div>
+      <div id="f-list" style="font-size:.86rem;display:grid;gap:.35rem;margin-bottom:.65rem"></div>
+      <button class="phone-btn danger" id="f-toggle">Mostrar só livres</button>
+      <div class="screen-out" id="f-out" style="min-height:44px;margin-top:.6rem">Visualização completa</div>
+    </div>
+
+    <div>
+      <div class="summary">
+        <span>Testes do Filtro (<code>PB-F</code>)</span>
+        <button class="run-all-btn" data-group="usf">▶ Testar Filtro (3)</button>
+        <span class="score" id="usf-score">0 / 3</span>
+      </div>
+
+      <div class="test" data-test="usf-t1">
+        <header><b>CT-F01</b><h4>Filtrar horários livres em 10/11</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> selecionar 10/11 e ativar "Mostrar só livres"</div>
+          <div><strong>Esperado:</strong> exibir somente <code>11:00 Livre</code></div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="usf-t2">
+        <header><b>CT-F02</b><h4>Filtrar em 12/11 (todos ocupados)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> selecionar 12/11 e ativar "Mostrar só livres"</div>
+          <div><strong>Esperado:</strong> mostrar mensagem "Nenhum horário livre nesta data"</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="usf-t3">
+        <header><b>CT-F03</b><h4>Voltar para a lista completa</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> em 10/11 filtrado, clicar em "Ver lista completa"</div>
+          <div><strong>Esperado:</strong> voltar a exibir 10:00, 11:00 e 14:00</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 data-n="5">Protótipo 2: Lembrete e limites de 30 minutos (<code>PB-L</code>)</h3>
+  <div class="lab">
+    <div>
+      <div class="switch" id="l-switch">
+        <button class="on" data-v="bug">Tabela Etapa 4 (com falha)</button>
+        <button data-v="ok">Corrigido</button>
+      </div>
+      <div class="phone">
+        <div class="bar"><span>Lembrete · Bruno</span><span>Sala 1 · 10/11</span></div>
+        <div style="font-size:.82rem;color:var(--ink-soft);margin-bottom:.4rem">Simular ação:</div>
+        <button class="slot sel" id="l-sc-reag">8h50: trocar 10h → 11h</button>
+        <button class="slot" id="l-sc-lim30">10h30: trocar 12h → 11h (30 min)</button>
+        <button class="slot" id="l-sc-lim29">10h31: trocar 12h → 11h (29 min)</button>
+        <div class="screen-out" id="l-out" style="min-height:68px;margin-top:.6rem">Clique em um cenário acima</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="summary">
+        <span>Testes do Lembrete (<code>PB-L</code>)</span>
+        <button class="run-all-btn" data-group="usl">▶ Testar Lembrete (4)</button>
+        <span class="score" id="usl-score">0 / 4</span>
+      </div>
+
+      <div class="test" data-test="usl-t1">
+        <header><b>CT-L02 (BUG)</b><h4>Encenação Etapa 4: troca 10h→11h às 8h50</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> simular troca 10h→11h na versão da tabela da Etapa 4</div>
+          <div><strong>Esperado:</strong> nenhum envio às 9h30; 1 envio às 10h30</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+        <div class="note">Falha reproduzida da Etapa 4: violou CA-L02 ao disparar também o lembrete antigo às 9h30.</div>
+      </div>
+
+      <div class="test" data-test="usl-t2">
+        <header><b>CT-L02 (OK)</b><h4>Troca 10h→11h às 8h50 (corrigido)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> simular troca 10h→11h na versão corrigida</div>
+          <div><strong>Esperado:</strong> nada às 9h30; 1 envio às 10h30 (11:00)</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="usl-t3">
+        <header><b>CT-L04</b><h4>Limite exato 30 min (10h30: 12h → 11h)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> Bruno confirma troca às 10h30 de 12h para 11h</div>
+          <div><strong>Esperado:</strong> 1 envio às 10h30 (regra 30 min); nada às 11h30</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="usl-t4">
+        <header><b>CT-L05</b><h4>Limite 29 min (10h31: 12h → 11h)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> Bruno confirma troca às 10h31 de 12h para 11h</div>
+          <div><strong>Esperado:</strong> 1 envio imediato às 10h31; nada às 11h30</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3 data-n="6">Decisão sobre a Definição de Pronto (DoD) e regressão</h3>
+  <div class="cols">
+    <div class="box">
+      <span class="label">PB-F · Filtro de horários</span>
+      <p><span class="tag no">NÃO PRONTO</span></p>
+      <p style="margin-top:.45rem"><b>Por quê:</b> todos os testes passaram e foram registrados, mas falta a <b>revisão/conferência por outro integrante</b> exigida pela DoD.</p>
+      <p><b>O que falta:</b> outro integrante do trio revisar e registrar a conferência antes de incluir no Incremento.</p>
+    </div>
+    <div class="box">
+      <span class="label">PB-L · Lembrete de reserva</span>
+      <p><span class="tag no">NÃO PRONTO</span></p>
+      <p style="margin-top:.45rem"><b>Por quê:</b> houve revisão por outro integrante, mas <code>CT-L02</code> falhou (envio duplicado às 9h30) e <code>CT-L03</code>, <code>CT-L04</code> e <code>CT-L05</code> não foram executados.</p>
+      <p><b>Correção e regressão:</b> cancelar o lembrete antigo ao confirmar troca, executar <code>CT-L01</code> a <code>CT-L05</code> e rodar teste de regressão em <b><code>PB-01</code></b> (confirmar que o reagendamento ainda exibe sala, data e horário certos, pois ambos usam o mesmo fluxo de troca).</p>
+    </div>
+  </div>
+</section>
+
+<footer>Engenharia de Software · Alunos: Daniel Alves, Kaio Costa e Francisco Breno</footer>
+</main>
+
+<script src="../assets/js/core.js"></script>
+<script src="../assets/js/parte2.js"></script>
+</body>
+</html>

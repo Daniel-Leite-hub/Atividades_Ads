@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Scrum na Biblioteca — Atividades 01 a 04</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Scrum na Biblioteca — Atividades 01 a 05</title>
+  <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
 
@@ -19,6 +19,8 @@
     <button data-tab="atv2"><span>02</span>Papéis, artefatos e eventos</button>
     <button data-tab="atv3"><span>03</span>Product Owner</button>
     <button data-tab="atv4"><span>04</span>Scrum Master</button>
+    <button data-tab="atv5"><span>05</span>Time Scrum</button>
+    <a class="nav-ext" href="pages/atividades-06-a-12.html"><span>Atividades 06–12</span><span>→</span></a>
   </nav>
   <div class="team">
     <strong>Alunos</strong>
@@ -33,17 +35,17 @@
   <span class="kicker">Atividades práticas em trio</span>
   <h2>App de reserva de salas da biblioteca</h2>
   <p class="lead">
-    Resolução das quatro atividades de Scrum usando o mesmo produto: consultar, reservar e cancelar horários da Sala 1.
+    Resolução das cinco atividades de Scrum usando o mesmo produto: consultar, reservar e cancelar horários da Sala 1.
     Cada aba traz as decisões do trio, um protótipo simples e os testes clicáveis.
   </p>
 
   <div class="test-bar">
     <div>
-      <strong>Testes das 4 atividades</strong>
-      <small id="global-status">0 de 11 testados</small>
+      <strong>Testes das 5 atividades</strong>
+      <small id="global-status">0 de 14 testados</small>
     </div>
     <div class="test-bar-actions">
-      <button class="run-all-btn" id="global-run-all">▶ Executar todos (11)</button>
+      <button class="run-all-btn" id="global-run-all">▶ Executar todos (14)</button>
       <button class="subtle-btn dark" id="global-reset-all">↺ Limpar</button>
     </div>
   </div>
@@ -102,6 +104,21 @@
         </div>
         <h4>Scrum Master</h4>
         <p>Impedimento de conta sem acesso, chamado ao suporte e plano adaptado pelo time.</p>
+      </div>
+      <div class="act-card-footer">
+        <span>3 testes</span>
+        <span>Abrir →</span>
+      </div>
+    </div>
+
+    <div class="act-card" data-goto="atv5">
+      <div>
+        <div class="act-card-header">
+          <span class="label">Atividade 05</span>
+          <span class="tag wait" id="card-status-a5">0 / 3</span>
+        </div>
+        <h4>Time Scrum</h4>
+        <p>Plano inicial e ajustado, correção da inconsistência entre "Minhas reservas" e "Consultar horários" e testes Confirmar/Voltar.</p>
       </div>
       <div class="act-card-footer">
         <span>3 testes</span>
@@ -503,9 +520,155 @@ Obrigado, Francisco (time do app)</pre>
   </div>
 </section>
 
+<!-- ================= ATIVIDADE 05 ================= -->
+<section class="panel" id="atv5">
+  <span class="kicker">Atividade 05 · Time Scrum</span>
+  <h2>Organizar o trabalho e corrigir a inconsistência</h2>
+  <p class="lead">
+    O time recuperou o acesso aos testes e retomou o cancelamento. A Sala 1 está reservada por <b>Ana às 10h</b>.
+    Meta da Sprint: permitir que Ana cancele sua reserva e que outro estudante veja o horário liberado na consulta.
+  </p>
+
+  <h3 data-n="1">Responsabilidades do Time Scrum</h3>
+  <div class="box">
+    <table class="roles">
+      <tr><th>Papel</th><th>Aluno</th><th>Contribuição na simulação</th></tr>
+      <tr>
+        <td><b>Product Owner</b></td>
+        <td>Daniel</td>
+        <td>Explica que Ana espera cancelar (ou voltar) sem erro e que outro estudante precisa ver a Sala 1 às 10h livre logo após a confirmação.</td>
+      </tr>
+      <tr>
+        <td><b>Scrum Master</b></td>
+        <td>Kaio</td>
+        <td>Conduz uma conversa curta para que os três opinem e percebam que "Minhas reservas" e "Consultar horários" dependem uma da outra.</td>
+      </tr>
+      <tr>
+        <td><b>Developers (rep.)</b></td>
+        <td>Francisco</td>
+        <td>Propõe a sequência de trabalho (definir comportamento → desenhar telas → testar fluxo) e divide como o trio ajuda a prototipar e conferir.</td>
+      </tr>
+    </table>
+  </div>
+
+  <h3 data-n="2">Plano inicial da Sprint</h3>
+  <div class="box">
+    <span class="label">Meta da Sprint</span>
+    <p class="quote">Permitir que Ana cancele sua reserva e que outro estudante consiga ver o horário liberado na consulta.</p>
+    <table class="roles" style="margin-top:.7rem">
+      <tr><th>Ação no plano</th><th>Quem conduz</th><th>Quem ajuda</th></tr>
+      <tr><td>1. Definir o comportamento (estado inicial, "Confirmar" e "Voltar")</td><td>Daniel (PO)</td><td>Kaio e Francisco</td></tr>
+      <tr><td>2. Desenhar as telas "Minhas reservas" e "Consultar horários"</td><td>Francisco (Dev)</td><td>Daniel e Kaio</td></tr>
+      <tr><td>3. Conferir o fluxo entre as duas telas com testes simulados</td><td>Kaio (SM)</td><td>Francisco e Daniel</td></tr>
+    </table>
+  </div>
+
+  <h3 data-n="3">Inconsistência encontrada e plano ajustado</h3>
+  <div class="cols">
+    <div class="box">
+      <span class="label">Conversa do Time Scrum na 1ª demonstração</span>
+      <p><b>Problema:</b> Ana confirmou o cancelamento. "Minhas reservas" mostrou cancelada, mas "Consultar horários" continuou exibindo a Sala 1 às 10h como <b>ocupada</b>.</p>
+      <p><b>Daniel (PO):</b> "Outro estudante continua vendo a sala ocupada, perde o horário vago e a Meta da Sprint falha."</p>
+      <p><b>Kaio (SM):</b> "O que precisa mudar no fluxo e como podemos nos ajudar para corrigir e testar rápido?"</p>
+      <p><b>Francisco (Dev):</b> "Faltou o botão Confirmar atualizar a consulta da Sala 1 às 10h para livre."</p>
+    </div>
+    <div class="box">
+      <span class="label">Ajuste registrado no plano</span>
+      <table class="roles">
+        <tr><td><b>O que vai mudar</b></td><td>Ao escolher "Confirmar" em "Minhas reservas", liberar a Sala 1 às 10h também em "Consultar horários". Se escolher "Voltar", manter tudo como está.</td></tr>
+        <tr><td><b>Quem ajuda a corrigir</b></td><td>Francisco ajusta o protótipo e Daniel revisa os textos das telas.</td></tr>
+        <tr><td><b>Quem confere o resultado</b></td><td>O trio inteiro repete os testes Caso A e Caso B, trocando as funções entre os casos.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <h3 data-n="4">Protótipo das duas telas e testes (Confirmar e Voltar)</h3>
+  <div class="lab">
+    <div>
+      <div class="switch" id="a5-switch">
+        <button class="on" data-v="bug">1ª demonstração (com falha)</button>
+        <button data-v="ok">Versão corrigida</button>
+      </div>
+
+      <div class="phone">
+        <div class="sub-screen">
+          <div class="bar"><span>Minhas reservas</span><span>Ana</span></div>
+          <div style="font-size:.88rem;margin-bottom:.5rem">
+            <b>Sala 1 · 10:00</b><br>
+            Reserva: <span class="tag no" id="a5-ana-tag">Ativa</span>
+          </div>
+          <button class="phone-btn danger" id="a5-start-cancel">Cancelar reserva</button>
+          <div id="a5-choice-box" style="display:none;margin-top:.55rem;padding:.6rem;background:#fff;border:1px solid var(--line);border-radius:8px;font-size:.85rem">
+            Confirmar o cancelamento da Sala 1 às 10:00?
+            <div class="btn-row">
+              <button class="phone-btn muted" id="a5-back-btn">Voltar</button>
+              <button class="phone-btn danger" id="a5-confirm-btn">Confirmar</button>
+            </div>
+          </div>
+          <div class="screen-out" id="a5-ana-out" style="min-height:48px;margin-top:.6rem">Reserva de Ana ativa</div>
+        </div>
+
+        <div class="sub-screen">
+          <div class="bar"><span>Consultar horários</span><span>Estudante</span></div>
+          <div style="font-size:.88rem;margin-bottom:.45rem">
+            <b>Sala 1 · 10:00</b> — consulta de outro estudante
+          </div>
+          <button class="phone-btn" id="a5-check-btn">Consultar Sala 1 (10:00)</button>
+          <div class="screen-out no" id="a5-peer-out" style="min-height:48px;margin-top:.6rem">Ocupada</div>
+        </div>
+
+        <button class="subtle-btn" id="a5-reset" style="margin-top:.75rem;width:100%">↺ Estado inicial</button>
+      </div>
+    </div>
+
+    <div>
+      <div class="summary">
+        <span>Testes da Atividade 05</span>
+        <button class="run-all-btn" data-group="a5">▶ Executar todos (3)</button>
+        <span class="score" id="a5-score">0 / 3</span>
+      </div>
+
+      <div class="test" data-test="a5-t1">
+        <header><b>1ª DEMO</b><h4>Reproduzir inconsistência ao confirmar</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> na 1ª demonstração, confirmar o cancelamento de Ana e consultar 10:00</div>
+          <div><strong>Esperado:</strong> reserva cancelada e Sala 1 às 10:00 "Livre" na consulta</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+        <div class="note">Falha reproduzida da 1ª demonstração: "Minhas reservas" cancelou, mas "Consultar horários" ainda mostrou "Ocupada".</div>
+      </div>
+
+      <div class="test" data-test="a5-t2">
+        <header><b>CASO A</b><h4>Confirmar cancelamento (versão corrigida)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> começar com reserva ativa, cancelar e tocar em "Confirmar"</div>
+          <div><strong>Esperado:</strong> Minhas reservas: "Cancelada" · Consultar horários: "Livre"</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="test" data-test="a5-t3">
+        <header><b>CASO B</b><h4>Voltar sem cancelar (versão corrigida)</h4><button class="run">Testar</button></header>
+        <div class="test-lines">
+          <div><strong>Ação:</strong> começar com reserva ativa, iniciar cancelamento e tocar em "Voltar"</div>
+          <div><strong>Esperado:</strong> Minhas reservas: "Ativa" · Consultar horários: "Ocupada"</div>
+          <div class="got-row"><span><strong>Obtido:</strong> <span class="got">—</span></span><span class="tag-slot"></span></div>
+        </div>
+      </div>
+
+      <div class="box" style="margin-top:.85rem">
+        <span class="label">Troca de funções entre os casos de teste</span>
+        <p><b>Caso A — Confirmar:</b> Ana = Daniel · Outro estudante = Kaio · Aplicativo = Francisco.</p>
+        <p><b>Caso B — Voltar:</b> Ana = Francisco · Outro estudante = Daniel · Aplicativo = Kaio.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <footer>Engenharia de Software · Alunos: Daniel Alves, Kaio Costa e Francisco Breno</footer>
 </main>
 
-<script src="script.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/parte1.js"></script>
 </body>
 </html>

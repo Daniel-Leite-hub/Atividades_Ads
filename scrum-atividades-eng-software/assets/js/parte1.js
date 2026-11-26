@@ -1,87 +1,15 @@
-// Scrum na Biblioteca — Protótipos e Testes Simples
+// Scrum na Biblioteca — Parte 1 (Atividades 01 a 05)
 // Alunos: Daniel Alves, Kaio Costa e Francisco Breno
 
-const $ = (s, r = document) => r.querySelector(s);
-const $$ = (s, r = document) => [...r.querySelectorAll(s)];
-const sleep = ms => new Promise(res => setTimeout(res, ms));
-
-/* ---------- Navegação ---------- */
-function openTab(tabId) {
-  $$('nav button').forEach(x => x.classList.toggle('active', x.dataset.tab === tabId));
-  $$('.panel').forEach(p => p.classList.toggle('active', p.id === tabId));
-  window.scrollTo({ top: 0, behavior: 'smooth' });
-}
-
-$$('nav button').forEach(b => b.addEventListener('click', () => openTab(b.dataset.tab)));
-document.addEventListener('click', e => {
-  const gotoEl = e.target.closest('[data-goto]');
-  if (gotoEl) openTab(gotoEl.dataset.goto);
-});
-
-/* ---------- Utilitários ---------- */
-function setupSwitch(id, onChange) {
-  const sw = $('#' + id);
-  if (!sw) return;
-  $$('button', sw).forEach(b => b.addEventListener('click', () => {
-    $$('button', sw).forEach(x => x.classList.toggle('on', x === b));
-    onChange(b.dataset);
-  }));
-}
-
-function selectSlot(phone, time) {
-  $$('.slot', phone).forEach(s => s.classList.toggle('sel', s.dataset.time === time));
-}
-
-function setupSlots(phone, onSelect) {
-  $$('.slot', phone).forEach(s => s.addEventListener('click', () => {
-    selectSlot(phone, s.dataset.time);
-    onSelect(s.dataset.time);
-  }));
-}
-
-function show(el, cls, html) {
-  el.className = 'screen-out' + (cls ? ' ' + cls : '');
-  el.innerHTML = html;
-}
-
-/* ---------- Resultados dos Testes ---------- */
-function report(testId, got, pass) {
-  const card = $(`[data-test="${testId}"]`);
-  if (!card) return;
-  card.classList.remove('pass', 'fail');
-  if (pass === true) card.classList.add('pass');
-  if (pass === false) card.classList.add('fail');
-
-  const tag = pass === true ? '<span class="tag ok">PASSOU</span>'
-            : pass === false ? '<span class="tag no">FALHOU</span>'
-            : '<span class="tag wait">BLOQUEADO</span>';
-
-  const gotEl = $('.got', card);
-  const tagSlot = $('.tag-slot', card);
-  if (gotEl) gotEl.textContent = got;
-  if (tagSlot) tagSlot.innerHTML = tag;
-
-  card.dataset.state = pass === true ? 'pass' : pass === false ? 'fail' : 'block';
-  updateScores();
-}
-
-function resetTest(testId) {
-  const card = $(`[data-test="${testId}"]`);
-  if (!card) return;
-  card.classList.remove('pass', 'fail');
-  delete card.dataset.state;
-  const gotEl = $('.got', card);
-  const tagSlot = $('.tag-slot', card);
-  if (gotEl) gotEl.textContent = '—';
-  if (tagSlot) tagSlot.innerHTML = '';
-}
+const tests = {};
 
 function updateScores() {
   const groups = [
     { id: 'a1', total: 4 },
     { id: 'a2', total: 2 },
     { id: 'a3', total: 2 },
-    { id: 'a4', total: 3 }
+    { id: 'a4', total: 3 },
+    { id: 'a5', total: 3 }
   ];
 
   let totalExecuted = 0;
@@ -100,6 +28,8 @@ function updateScores() {
     if (scoreEl) {
       if (id === 'a1' && executed === total && failed === 1) {
         scoreEl.textContent = `${passed} / ${total} (1 falha esperada)`;
+      } else if (id === 'a5' && executed === total && failed === 1) {
+        scoreEl.textContent = `${passed} / ${total} (1 falha reproduzida)`;
       } else if (id === 'a4' && blocked > 0) {
         scoreEl.textContent = `${passed} / ${total} (${blocked} bloqueados)`;
       } else {
@@ -118,6 +48,9 @@ function updateScores() {
       } else if (id === 'a1' && passed === 3 && failed === 1) {
         cardBadge.className = 'tag ok';
         cardBadge.textContent = '3 / 4 OK';
+      } else if (id === 'a5' && passed === 2 && failed === 1) {
+        cardBadge.className = 'tag ok';
+        cardBadge.textContent = '2 / 3 OK';
       } else if (blocked > 0) {
         cardBadge.className = 'tag wait';
         cardBadge.textContent = `${blocked} bloqueados`;
@@ -131,10 +64,16 @@ function updateScores() {
   const globalStatus = $('#global-status');
   if (globalStatus) {
     globalStatus.textContent = totalExecuted === 0
-      ? '0 de 11 testados'
-      : `${totalExecuted} de 11 testados · ${totalPassed} passaram`;
+      ? '0 de 14 testados'
+      : `${totalExecuted} de 14 testados · ${totalPassed} passaram`;
   }
 }
+
+const { report, resetTest, runGroup, bindButtons } = createTestSuite({
+  tests,
+  onUpdate: updateScores,
+  waitLabel: 'BLOQUEADO'
+});
 
 /* ======================= ATIVIDADE 01 ======================= */
 const a1 = { round: 1, time: '09:00', phone: $('#atv1 .phone'), out: $('#a1-out') };
@@ -170,8 +109,6 @@ function runA1(round, time) {
   selectSlot(a1.phone, time);
   return consultar(time, round);
 }
-
-const tests = {};
 
 tests['a1-t1'] = async () => {
   const r = runA1(1, '09:00');
@@ -259,19 +196,19 @@ const decisoes = {
     itens: [
       ['A · Enviar lembrete', '5 estudantes chegaram atrasados por esquecer o horário.', 'ok', 'Esta semana'],
       ['B · Cancelar reserva', 'Útil, mas ainda sem registro de salas ociosas.', 'wait', 'Depois'],
-      ['C · Personalizar cores', 'Não resolve atrasos nem faltas.', 'wait', 'Depois'],
+      ['C · Personalizar cores', 'Não resolve atrasos nem faltas.', 'wait', 'Depois']
     ],
-    why: 'O lembrete vem primeiro porque resolve os 5 atrasos da semana e o app já envia notificações. Personalizar cores pode esperar porque é só visual e não ajuda ninguém a usar a sala.',
+    why: 'O lembrete vem primeiro porque resolve os 5 atrasos da semana e o app já envia notificações. Personalizar cores pode esperar porque é só visual e não ajuda ninguém a usar a sala.'
   },
   2: {
     who: 'PO: Francisco · SM: Daniel · Dev: Kaio',
     itens: [
       ['B · Cancelar reserva', 'Fato novo: 8 reservas ficaram sem uso e travaram horários.', 'ok', 'Esta semana', true],
       ['A · Enviar lembrete', 'Continua importante para os 5 atrasos.', 'wait', 'Próxima'],
-      ['C · Personalizar cores', 'Continua sem impacto no uso das salas.', 'wait', 'Depois'],
+      ['C · Personalizar cores', 'Continua sem impacto no uso das salas.', 'wait', 'Depois']
     ],
-    why: 'O cancelamento subiu para 1º lugar por causa do fato novo: 8 reservas ficaram sem uso enquanto outros estudantes encontravam tudo ocupado. Liberar esses horários faz as salas serem realmente usadas, cumprindo a Meta do Produto.',
-  },
+    why: 'O cancelamento subiu para 1º lugar por causa do fato novo: 8 reservas ficaram sem uso enquanto outros estudantes encontravam tudo ocupado. Liberar esses horários faz as salas serem realmente usadas, cumprindo a Meta do Produto.'
+  }
 };
 
 function renderA3(s) {
@@ -403,34 +340,98 @@ tests['a4-t3'] = async () => {
   report('a4-t3', 'Sala 1 · 10:00 aparece como "livre"', true);
 };
 
-/* ======================= EXECUTORES ======================= */
-async function runGroup(groupPrefix, buttonEl) {
-  if (buttonEl) buttonEl.disabled = true;
-  const groupTests = Object.keys(tests).filter(k => k.startsWith(groupPrefix));
-  for (const tId of groupTests) {
-    await tests[tId]();
-    await sleep(180);
+/* ======================= ATIVIDADE 05 ======================= */
+const a5 = { versao: 'bug', ativa: true, salaOcupada: true };
+
+function syncA5UI() {
+  const anaTag = $('#a5-ana-tag');
+  const startBtn = $('#a5-start-cancel');
+  const choiceBox = $('#a5-choice-box');
+  const anaOut = $('#a5-ana-out');
+  const peerOut = $('#a5-peer-out');
+
+  if (a5.ativa) {
+    anaTag.className = 'tag no';
+    anaTag.textContent = 'Ativa';
+    startBtn.disabled = false;
+    show(anaOut, '', 'Reserva de Ana ativa');
+  } else {
+    anaTag.className = 'tag ok';
+    anaTag.textContent = 'Cancelada';
+    startBtn.disabled = true;
+    choiceBox.style.display = 'none';
+    show(anaOut, 'ok', 'Reserva cancelada');
   }
-  if (buttonEl) buttonEl.disabled = false;
+
+  show(peerOut, a5.salaOcupada ? 'no' : 'ok', a5.salaOcupada ? 'Ocupada' : 'Livre');
 }
 
-$$('.test').forEach(card => {
-  const btn = $('.run', card);
-  btn.addEventListener('click', async () => {
-    btn.disabled = true;
-    btn.textContent = '...';
-    try {
-      await tests[card.dataset.test]();
-    } finally {
-      btn.disabled = false;
-      btn.textContent = 'Testar';
-    }
-  });
+function resetA5() {
+  a5.ativa = true;
+  a5.salaOcupada = true;
+  $('#a5-choice-box').style.display = 'none';
+  syncA5UI();
+}
+
+function setA5Version(versao) {
+  a5.versao = versao;
+  $$('#a5-switch button').forEach(b => b.classList.toggle('on', b.dataset.v === versao));
+  resetA5();
+}
+
+setupSwitch('a5-switch', d => setA5Version(d.v));
+
+$('#a5-start-cancel').addEventListener('click', () => {
+  if (!a5.ativa) return;
+  $('#a5-choice-box').style.display = 'block';
 });
 
-$$('.run-all-btn[data-group]').forEach(btn => {
-  btn.addEventListener('click', () => runGroup(btn.dataset.group, btn));
+$('#a5-back-btn').addEventListener('click', () => {
+  $('#a5-choice-box').style.display = 'none';
+  syncA5UI();
 });
+
+$('#a5-confirm-btn').addEventListener('click', () => {
+  a5.ativa = false;
+  if (a5.versao === 'ok') a5.salaOcupada = false;
+  syncA5UI();
+});
+
+$('#a5-check-btn').addEventListener('click', () => {
+  show($('#a5-peer-out'), a5.salaOcupada ? 'no' : 'ok', a5.salaOcupada ? 'Ocupada' : 'Livre');
+});
+
+$('#a5-reset').addEventListener('click', resetA5);
+
+tests['a5-t1'] = async () => {
+  setA5Version('bug');
+  $('#a5-choice-box').style.display = 'block';
+  await sleep(150);
+  $('#a5-confirm-btn').click();
+  $('#a5-check-btn').click();
+  report('a5-t1', `Minhas reservas: ${a5.ativa ? 'Ativa' : 'Cancelada'} | Consulta: ${a5.salaOcupada ? 'Ocupada' : 'Livre'}`, !a5.ativa && !a5.salaOcupada);
+};
+
+tests['a5-t2'] = async () => {
+  setA5Version('ok');
+  $('#a5-choice-box').style.display = 'block';
+  await sleep(150);
+  $('#a5-confirm-btn').click();
+  $('#a5-check-btn').click();
+  report('a5-t2', `Minhas reservas: ${a5.ativa ? 'Ativa' : 'Cancelada'} | Consulta: ${a5.salaOcupada ? 'Ocupada' : 'Livre'}`, !a5.ativa && !a5.salaOcupada);
+};
+
+tests['a5-t3'] = async () => {
+  setA5Version('ok');
+  $('#a5-choice-box').style.display = 'block';
+  await sleep(150);
+  $('#a5-back-btn').click();
+  $('#a5-check-btn').click();
+  report('a5-t3', `Minhas reservas: ${a5.ativa ? 'Ativa' : 'Cancelada'} | Consulta: ${a5.salaOcupada ? 'Ocupada' : 'Livre'}`, a5.ativa && a5.salaOcupada);
+};
+
+/* ======================= EXECUTOR GLOBAL ======================= */
+bindButtons();
 
 $('#global-run-all').addEventListener('click', async () => {
   const btn = $('#global-run-all');
@@ -445,9 +446,11 @@ $('#global-run-all').addEventListener('click', async () => {
     const amanhaBtn = $('button[data-d="amanha"]', $('#a4-switch'));
     if (amanhaBtn && !amanhaBtn.classList.contains('on')) amanhaBtn.click();
     await runGroup('a4');
+
+    await runGroup('a5');
   } finally {
     btn.disabled = false;
-    btn.textContent = '▶ Executar todos (11)';
+    btn.textContent = '▶ Executar todos (14)';
   }
 });
 
@@ -457,6 +460,7 @@ $('#global-reset-all').addEventListener('click', () => {
   resetA3();
   const hojeBtn = $('button[data-d="hoje"]', $('#a4-switch'));
   if (hojeBtn) hojeBtn.click();
+  setA5Version('bug');
   updateScores();
 });
 
