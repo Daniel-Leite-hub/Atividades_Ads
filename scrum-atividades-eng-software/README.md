@@ -1,6 +1,8 @@
 ﻿# Scrum na Biblioteca — Atividades Práticas (01 a 12)
 
-**Site publicado:** [Scrum na Biblioteca](https://daniel-leite-hub.github.io/Atividades_Ads/)
+## 🌐 [ACESSE O SITE PUBLICADO](https://daniel-leite-hub.github.io/Atividades_Ads/)
+
+**Explore as atividades interativas e os protótipos Scrum diretamente no navegador.**
 
 > Projeto da disciplina de **Engenharia de Software** que reúne a resolução completa das atividades práticas em trio sobre o framework **Scrum**, acompanhadas de protótipos interativos de tela e testes clicáveis executados diretamente no navegador.
 
